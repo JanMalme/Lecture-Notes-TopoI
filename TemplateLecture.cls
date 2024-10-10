@@ -21,7 +21,7 @@
 \RequirePackage{algorithm}
 \RequirePackage{algpseudocode}
 \RequirePackage{booktabs}
-\RequirePackage[ngerman]{babel}
+\RequirePackage[english]{babel}
 \RequirePackage{calc}
 \RequirePackage{color}
 \RequirePackage{dsfont}
@@ -185,6 +185,7 @@
 \newcommand{\Img}{\mathrm{Im}}
 \newcommand{\Inkl}{\mathrm{Inkl}}
 \newcommand{\const}{\mathrm{const}}
+\newcommand{\inner}[1]{\mathring{#1}}
 
 \newcommand{\kdot}{\cdot_k}%{\mathbin{\raisebox{2pt}{\(\divdot\)}}}
 \newcommand{\bij}{\mathrel{\overset{\sim}{\to}}}
@@ -262,16 +263,18 @@
 \theoremstyle{definition}
 \newtheorem{frage}[lemma]{Frage}
 \newtheorem{definition}[lemma]{Definition}
-\newtheorem*{beispiel}{Beispiel}
-\newtheorem{bsp}[lemma]{Beispiel}
+\newtheorem*{beispiel}{Example}
+\newtheorem{bsp}[lemma]{Example}
+\newtheorem*{example}{example}
 \newtheorem{aufgabe}{Aufgabe}
 \newtheorem{behauptung}[lemma]{Behauptung}
 \newtheorem*{bemerkung}{Bemerkung}
 \newtheorem{bem}[lemma]{Bemerkung}
 \newtheorem{axiom}[lemma]{Axiom}
 \newtheorem{problem}{Aufgabe}
-\newtheorem*{konstruktion}{Konstruktion}
-\newtheorem{Konstruktion}[lemma]{Konstruktion}
+\newtheorem*{construction}{Construction}
+\newtheorem{Construction}[lemma]{Construction}
+\newtheorem*{notation}{Notation}
 
 
 
@@ -290,7 +293,7 @@
 {lemstyle}{lem}
 \newtcbtheorem[use counter*=lemma,crefname={definition}{definitions}]{defi}{Definition}%
 {defstyle}{def}
-\newtcbtheorem[use counter*=lemma,crefname={theorem}{theorems}]{thm}{Satz}%
+\newtcbtheorem[use counter*=lemma,crefname={theorem}{theorems}]{thm}{Theorem}%
 {theostyle}{thm}
 
 
