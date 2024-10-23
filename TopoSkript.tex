@@ -588,14 +588,221 @@ Proving equivalence will be a task on an exercise sheet.
         \((y,z) \in U\times K \subseteq B\) U open K neighborhood of Z.
         So \(B\) is indeed open.
     \end{proof}
+    \begin{corollary}
+        Let \(X = A \cup_{J\times D^n} J\times D^n\) be obtained from \(A\) by attaching \(n\)-cells. Then for every locally compact space \(Z\), the map \((A\times Z) \amalg (J\times D^n \times Z) \to (A \cup_{J\times \partial D^n} J\times D^n) \times Z = X \times Z\) is a quotient map.
+    \end{corollary}
+    \begin{proof}
+        The map \(f\) is the composite
+        \[A\times Z) \amalg (J\times D^n \times Z) \cong (A \amalg J\times D^n) \times Z \to X\times Z\]
+        Products commutes with disjoint unions.
+    \end{proof}
+    \begin{corollary}
+        Let \((X,A)\) be a relative CW-complex and \(Z\) a locally compact space. Then for any \(O \subseteq X \times Z\), the following are equivalent:
+        \begin{enumerate}
+            \item The set \(O\) is open in \(X\times Z\).
+            \item For every \(n \geq -1\), \(O\cap (X_n \times Z)\) is open in \(X_n \times Z\)
+            \item For every finite subcomplex \((Y,A)\) of \(X\), \(O\cap (Y \times Z)\) is open in \(Y \times Z\).
+        \end{enumerate}
+    \end{corollary}
+    \begin{proof}
+        \begin{description}
+            \item[1. \(\implies\) 2., 1. \(\implies\) 3.] by subspace topology.
+            \item[2. \(\implies\) 1.] We define \(\bar X = X_{-1} \amalg X_0 \amalg X_1 \amalg \dots \amalg X_n \amalg \dots\). The map \(\bar f\colon \bar X \to X\) this is the inclusion of \(X_m\) in ??. and \(\bar f\) is a quotient map by the weak topology.
+            By the thae, \(\bar f\times Z\colon \bar X \times Z \to X \times Z\) is a quotient map.
+            Hence also \(\coprod_{n \geq 1} (X_n \times Z) \to X \times Z\) is a quotient map. % cong between the two
+            \item[3. \(\implies\) 1.] Recall from the previous class: Let \((X,A)\) be a relative CW-complex, let \(U \subseteq X\), such that\begin{itemize}
+                \item \(U\cap A\) is closed in \(A\)
+                \item \(U\) intersected with the closure of every cell is closed.
+            \end{itemize}
+            Then \(U\) is closed.
+            Proposition Let \((X,A)\) be a relative CW-complex. Then the tautological map
+            \[\coprod_{(Y,A) finite CW-subcomplex of (X,A)} Y \to X\] is a quotient map.
+            \begin{proof}
+                Every point of \(X\) is either contained in \(A\) or some open cell of \(X,A\). Since \((A,A)\) is finite, and the closure of every cell is contained in a finite subcomplex, the map is surjective.
+                Let \(U\subseteq X\) be such that \(q^{-1}(U)\) is closed. Then \(U\cap Y\) is closed in \(Y\) for every finite subcomplex \((Y,A)\) of \((X,A)\). This includes \((A,A)\), so \(U\cap A\) is closed in \(A\). The closure \(\bar{e_j}\) of a cell \(e_j\) is contained in some finite subcomplex \((Y,A)\), so \(U\cap Y\) is closed in \(Y\), so \(U\cap \bar{e_j}\) is cloesd in \(\bar{e_j}\). Hence \(U\) is cloesd in \(X\).
+            \end{proof}
+            Let \(O\subseteq X\times Z\) be such that \() \cap (Y \times Z)\) is open in \(Y \times Z\) for all finite subcomplexes \((Y,A)\) of \(X\). Then \(B = (X\times Z)\setminus O\) has the property that \(B\cap (Y\times Z)\) is closed in \(Y\times Z\) for every finite subcomplex \((Y,A)\) of \((X,A)\). Since \(Z\) is locally compact, product with \(Z\) preserves quotient maps, so \(q\times Z\colon (\coprod_{(Y,A)} Y) \times Z \cong \coprod_{Y,A} (Y\times Z)\)
+            arrows down
+            \(X\times Z\)
+        \end{description}
+    \end{proof}
+    \begin{corollary}
+        Let \((X,A)\) be a relative CW-complex, and \(Z\) a locally compact space. Let \(f\colon X\times Z \to Y\) be any map. Then the following are equivalent:
+        \begin{enumerate}
+            \item \(f\) is continuous.
+            \item For all \(n \geq -1\), the map \(f\rvert_{X_n \times Z}\colon X_n \times Z \to Y\) is continuous.
+        \end{enumerate}
+    \end{corollary}
+    \begin{proof}
+        \(X\times Z\) has the weak topology of the filtration \(\set{X_n \times Z}_{n \geq -1}\) because
+        \[\coprod_{n \geq 1} X_n \times Z \to X \times Z\]
+        is a quotient map.
+    \end{proof}
+    \subsubsection*{Homotopy extension property}
+    \begin{defi}{}{}
+        Let \(X\) be a space and \(A\) a subspace of \(X\). Then \(X,A\) has the \emph{homotopy extension property}, if the following holds: let \(f\colon X\to Y\) be a continuous map and let \(H\colon A\times [0,1] \to Y\) be a homotopy starting with \(f\rvert_A\), i.e. for all \(a \in A\) \(H(a,0) = f(a)\). Then there is a homotopy \(\bar H \colon X \times [0,1] \to Y\) starting with \(f\)and extending \(H\), i.e.
+        \begin{itemize}
+            \item for all \(x \in X\), \(\bar H(x,0) = f(x)\)
+            \item for all \((a,t) \in A\times [0,1], \bar H(a,t) = H(a,t)\).
+        \end{itemize}
+    \end{defi}
+    \begin{lem}
+        A pair \((X,A)\) has the HEP if and only if for every continuous map \(g\colon X\cup_A A \times [0,1] \to Y\), there is a continuous extension to \(X\times [0,1] \to Y\). Here \(X \cup_A A \times [0,1] \coloneq (X\amalg A \times [0,1])/\sim\) with \(a \sim (a,0)\) for all \(a \in A\).
+        Beware: \(X\cup_A A\times [0,1] \to X \times \set{0} \cup A \times [0,1] \subseteq X \times [0,1]\) \(x \mapsto (x,0), (a,t) \mapsto (a,t)\)
+        need not be a homeomorphism.
+    \end{lem}
+    \begin{proposition}
+        The  ?? \((f, H)\) of a homotopy extension property is equally defined to a continuous map
+        \[\]%tikz
+
+        So \((X,A)\) has the HEP iff \(f\cup_A H\) extends continuously to \(X\times [0,1]\).
+    \end{proposition}
+    \begin{lem}
+        Let \(A\) be a closed subset of \(X\). Then the tautological map
+        \[\tau\colon X\cup_A A\times [0,1] \to X \times \set{0} \cup A \times [0,1]\] is a homeomorphism.
+    \end{lem}
+    \begin{proof}
+        We know that \(\tau\) is a continuous bijection. We show that \(\tau\) is also a closed map. Let \(B\subseteq X\cup_A A\times [0,1]\) be a closed subset. Let \(p\colon X \amalg A \times [0,1] \to X \cup_A A\times [0,1]\) be the quotient map. Then \(p^{-1}(B) \cap X\) is closedin \(X\), and \(p^{-1}(B) \cap A \times[0,1]\) is closedin \(A\times [0,1]\). Since \(X\times \set{0}\) is closed in \(X\times [0,1]\), \((p^{-1}(B)\cap X) \times \set{0}\) because \(A\) is closed in \(X\), hence \(A\times [0,1]\) is closed in \(X\times [0,1]\).
+        So \(\tau(B)\) is the union of two closed subsets in \(X\times [0,1]\), and continuous in \(X\times \set{0} \cup A \times [0,1]\) and have ?? in \(X\times \set{0} \cup A \times [0,1]\).
+    \end{proof}
+    \begin{corollary}
+        Let \(A\) be a closed subspace of \(X\). Then \((X,A)\) has the HEP if and only if the inclusion \(X\times \set{0} \cup A \times [0,1]\) into \(X\times [0,1]\) has a continuous retraction.
+    \end{corollary}
+    \begin{proof}
+        \begin{itemize}
+            \item[\Ra] Apply the HEP to \(f\colon X \to X\times \set{0} \cup A \times [0,1]\) and \(x \mapsto (x,0)\)
+            \(H\colon A \times[0,1] \to \)%same space (a,t) \mapsto (a,t)
+            So the HEP gives a continuous mpa \(\bar H\colon X \times [0,1] \to X\times\set 0 \cup A \times [0,1]\). that extends f\& H
+            \item[\La] Let \(\gamma \colon X \times [0,1] \to X \times \set 0 \cup A \times [0,1]\) be a continuous retraction. Let \(f\colon X\to Y\), \(H\colon A \tiems [0,1] \to Y\) be a homotopy extension problem. Then
+            \[X \times [0,1] \to X \times \set 0 \cup A \times [0,1] \to Y\]
+            Then \(\bar H \coloneq \)%composite
+            is a homotopy extension of \(f\) and \(H\).
+        \end{itemize}
+    \end{proof}
+    \begin{proposition}
+        For every \(m \geq 0\), the pair \((\partial D^m, D^m)\) has the HEP. 
+    \end{proposition}
+    We exhibit a retraction \(r\colon D^m \times [0,1] \to D^m \times \set 0 \cup \partial D^m \times [0,1]\) to the inclusion.
+    For \((x,t) \) in \(D^m \times [0,1]\), the line through \((x,t)\) and \((0,2)\) meets \(D^m \times 0 \cup \partial D^m \times [0,1]\) in exactly one point that varies continuously with \((x,t)\), this point defines \(r(x,t)\).
+
+    \begin{proposition}
+        Let \(X\) be a space obtained by attaching \(m\)-cells to \(A\). Then \((X,A)\) has the HEP.
+    \end{proposition}
+    \begin{proof}
+        We construct a continuous retraction to \(X\times \set 0 \cup A \times [0,1] \to X\times [0,1]\). We let \(r \colon D^m \times [0,1] \to D^m \times \set 0 \cup \partial D^m \times [0,1]\) be a continuous retraction to the inclusion.
+        We define the retraction \(\rho\colon X \times [0,1] \to X \times \set{0} \cup A \times [0,1]\) as follows:
+        \[X\times [0,1] = (A \cup_{J\times \partial D^m} J\times D^m) \times [0,1] \la A \times [0,1] \cup_{J\times \partial D^m \times [0,1]} J\times D^m \times [0,1]\]%%tikz
+                arrow down
+        \(A\times [0,1] \cup X\times \set 0\) = \(A \times [0,1] \cup_{J\times \partial D^m} J\times D^m\) \(\cong\) \(A\times [0,1] \cup_{J\times \partial D^m \times [0,1]} J\times (D^m \times 0 \cup \partial D^m \times [0,1])\)
+    \end{proof}
+
+    \begin{thm}{}{}
+        Every relative CW-complex has the HEP.
+    \end{thm}
+    \begin{proof}
+        Let \((X,A)\) be a relative CW-complex. We construct by induction continuous retractions \(r_m\colon X_m \times [0,1] \to X_m \times 0 \cup A\times [0,1]\).
+        \begin{description}
+            \item[\(m = -1\)] Nothing to do.
+            \item[\(m \geq 0\)] Suppose \(r_{m-1}\) has alreadey been constructed. We define \(r_m\) as the composite \(X_m \times [0,1] \to X_m \times \set 0 \cup X_{m-1} \times [0,1] \to X_m \times \set 0 \cup (X_{m-1} \times \set 0 \cup A \times [0,1]) = X_m \times \set 0 \cup A \times [0,1]\). First arrow any retraction from previous proposition, second \(\Id \cup r_{m-1}\).
+            
+            We now define \(r\colon X\times [0,1]\) as the \enquote{union} of the \(r_m\)s, i.e. any \((x,t) \in X\times [0,1]\) is contained in \(X_m \times [0,1]\) for some \(m \geq 0\). We set \(r(x,t) \coloneq r_m(x,t)\). This is independent of \(m\), because \(r_{m+1}\rvert_{X_m\times [0,1]} = r_m\). Then \(r\rvert_{X_m \times [0,1]} = r_m\) is continuous for all \(m \geq 0\). So \(r\) is continuous because \(X \times [0,1]\) has the weak topology wrt \(\set{X_m \times [0,1]}_{m \geq 0}\).
+        \end{description}
+    \end{proof}
+    \textbf{non-example} Let \(X = [-1,0] \cup \set{1/n : n \geq 1}\), \(A = [-1, 0]\). Claim: \((X,A)\) does not have the HEP.
+
+    Let \(f\colon X \to X\) be the identity, \(H\colon A \times [0,1] \to X \) be \(H(a,t) = (1-t) \cdot a - t\) this is contracting \([-1,0]\) onto \[-1\]. Suppose there existed a homotopy \(\bar H \colon X \times [0,1] \to X\) from the identity that extends \(H\). Then \(\bar H\) would need to be constant on each isolated point \(1/n\). By continuity \(\bar H\) would also have to be the identity on the limit point \(0\), but \(H\) is not.
+
+    Remember \ref{thm:CAT}.
+
+    We will inductively construct the following data: for \(m \geq -1\):
+    \begin{itemize}
+        \item a continuous map \(f_m \colon X \o Y\)
+        \item Homotopy \(H_m \colon X \times [0, 1] \to Y\)
+    \end{itemize}
+    such that \(f_m\) is \enquote{cellular up to level \(m\)}, i.e. \(f_m(X_k) \subseteq Y_k\) for all \(k = -1, 0, \dots, m\).
+    \(H_m\) is a hhomotopy from \(f_{m-1}\) to \(f_m\) relative to \(X_{m-1}\).
+
+    We begin with \(f_{-1} = f\). For \(m \geq 0\) suppose the previous data has been constructed. By a previous special case of CAT applied to \((X_m, X_{m-1})\), \((Y, Y_{m-1})\) and \(f_{m-1}\rvert_{X_m} \colon X_m \to Y\) we obtain a homotopy
+    \[H\colon X_m \times [0,1 \to Y]\]
+    relative \(X_{m-1}\) from \(f_{m-1} \rvert_{X_m}\) to to some map \(H(\_, 1)\colon X_m \to Y\) such that \(H(X_m \times \set 1) \subseteq Y_m\). The HEP for the pair \((X, X_m)\) applied to \(f_{m-1} \colon X \to Y\) and \(H\) yields a homotopy
+    \[H_m \colon X \times [0,1] \to Y\]
+    form \(f_{m-1}\) that extends \(H\). Then we set \(f_m \coloneq H_m(\_,1)\colon X \to Y\). This has the desired properties.
+
+    If \(X\) was a finite-dimensional CW-complex we would be done.
+    We now define a homotopy \(H\colon X \times [0,1] \to Y\) by \enquote{running through the homotopies \(H_m\) faster and faster.}
+    \[H(x,t) = \begin{cases}
+        H_0(x, 2t) & 0 \leq t \leq 1/2 \\
+        H_1(x, 6 \cdot (t - 1/2)) & 1/2 \leq t \leq 2/3 \\
+        \vdots & \\
+        H_m(x, (m+1)(m+2) \cdot (t - m/(m+1))) & \text{ for } m/(m+1) \leq t \leq (m+1)/(m+2) \\
+        H_m(x,1) & \text{ for } t = 1, \;x \in X_m
+    \end{cases}\]
+    This map is continuous on \(X \times [0,1]\) by the weak topology because it is continuous on \(X_m \times [0,1]\) for all \(m \geq -1\).
 \end{proof}
 
+\enquote{The product of two CW-complexes \enquote{is} a CW-complex (often)}
 
+\textbf{Cells multiply}: There is a homeomorphism \(D^m \times D^n \cong D^{m + n}\) that such \((\partial D^m) \times D^n \cup D^m \times (\partial D^n)\) homeomorphic onto \(partial(D^{m+n})\). picture square = circle
 
+Let \(X\) and \(Y\) be CW-complexes. The conadidate CW-structure on \(X\times Y\) is the \emph{product CW-structure} with skeleta \((X \times Y)_n = \bigcup_{k = 0, \dots, n} X_k \times Y_{n-k}\).
 
+\begin{proposition}[CW-recognition theorem]
+    Let \(X\) be a Hausdorff space, \(J_k\) a set for all \(k \geq 0\), and \(q\colon \coprod_{k \geq 0} J_k \times D^k \to X\) a continuous map. Suppose that:
+    \begin{enumerate}
+        \item For every \(n \geq 0\), the restriction of \(q\) to \(J_n \times \inner{D^n}\) is injective, and the ... set of \(X\) is the disjoint union of \(q(J_n\times \inner{D^n})\) for \(n \geq 0\)
+        \item For all \(k \geq 0\) and \(j \in J_k\), the set \(q(j\times \partial D^k)\) is contained in a finite union of sets of the form \(q(i \times D^j)\) for some \(j < k\), \(i \in J_j\).
+        \item A subset \(A \subseteq X\) is closed in \(X\) if and only if \(A \cap q(j\times D^k)\) is closed in \(q(j \times D^k)\) for all \(k \geq 0, j \in J_k\).
+    \end{enumerate}
+    Then setting \(X_n \coloneq  \bigcup_{0 \leq k \leq n} q(J_k \times D^k)\) defines a CW-structure on \(X\).
+\end{proposition}
 
+\begin{proof}
+    Convenient notation: \(e_j^k \coloneq q(j\times \inner{D^k})\) for \(k \geq 0, j \in J_k\) is the \enquote{\(j\)-th open \(k\)-cell}.
+    \(\bar{e_j^k} = \text{closure of } e_j^k = q(j \times D^k)\) \enquote{\(j\)-th closed cell}.
 
+    We show by induction on n, that \(X_n\) is closed in \(X\) and \(X_n\) can be obtained from \(X_{n-1}\) by attaching \(n\)-cells indexed by \(J_n\).
 
+    We write \(\alpha J_n\times \partial D^n \to X_{n-1}\) for the restriction of \(q\).
+    \[X_{n-1} \amalg J_n \times D^n \to X\]%%tikz
+    arrow down P        arrow up f
+    \(X_{n-1} \cup_\alpha J\times D^n\)
+    arrow up is continuous and injective with image \(X_n\).
+
+    \textbf{Claim.} \(f\) is a closed map.
+    Let \(A \subseteq X_{n-1} \cup_\alpha J\times D^n\) be a closed subset. We want to show, that \(f(A)\) is closed in \(X\). We use 3. and check that \(f(A) \cap \bar{e_j^k}\) is closed in \(\bar{e_j^k}\) for all \(k \geq 0\), \(j\in J_k\).
+    \begin{description}
+        \item[Case 1] \(k < n\). Then \(\bar{e_j^k} \subseteq X_{n-1}\). Because \(A\) is closed, \(p^{-1}(A)\) is closed, so \(A\cap X_{n-1}\), in \(X_{n-1}\) This is closedin \(X\) by induction. So \(f(A) \cap \bar{e_j^k}\) is closed
+        \item[Case 2] \(k = n\) \(p^{-1}(A) \cap (j \times D^n)\) is closed in \(j\times D^n\), which is compact. So \(f(A) \cap \bar{e_j^n}\) is the continuous image of a compact set hence compact in \(X\), hence closed in \(X\), and in \(\bar{e_j^n}\).
+        \item[Case 3] \(k > n\). Because \(f(A) \subseteq X_n\), \(f(A) \cap \bar{e_j^k} \subseteq q(j\times \partial D^n) \subseteq \text{ finite union of cells of smaller dimension,}\) each of which are closed in the set by induction. So \(f(A) \cap \bar{e_j^k}\) is closed.
+    \end{description}
+    \(X\) has the weak topology: Let \(A \subseteq X\) be such that \(A \cap X_n\) is closed in \(X_n\) for all \(n \geq 0\). Then \(A \cap \bar{e_j^k}\) is closed in \(\bar{e_j^k}\) for all \(k \geq 0\), \(j \in J_k\) because \(\bar{e_j^k} \subseteq X_k\). By 3. \(A\) is closed in \(X\).
+\end{proof}
+
+\textbf{non-example.} \(D^2 = \bigcup_{j \in \partial D^2} \set{j} \cup \inner{D^2}\) is a union of uncountably many open \(0\)-cells, and one \(2\)-cell.
+
+\(q\colon (\partial D^2)_{\text{discret}} \amalg D^2 \to D^2\) the tautological map. This does not define a CW-structure on \(D^2\). The ffiniteness in 2 fails. Because \(\partial D^2\) is not contained in a finite union of cells of dimension \(\leq 1\).
+
+\begin{thm}{}{}
+    Let \(X,Y\) be CW-complexes such that \(Y\) is locally compact. Then \((X\times Y)_n \coloneq \bigcup_{k \leq n} X_k \times Y_{n-k}\) defines a CW-structure on \(X \times Y\).
+
+    The \(n\)-cells of this \emph{product CW-structure}\index{product CW-structure} biject with pairs of
+    \[\bigcup_{k = 0, \dots, n} (k \text{-cells of } X) \times ((n-k)\text{-cells of Y})\]
+\end{thm}
+\begin{proof}
+    We choose indexing sets and characteristic maps for the given CW-structure on \(X\) and \(Y\). This yields two quotient maps
+    \[q\colon \coprod_{k \geq 0} J_k \times D^k \to X \quad \q'\colon \coprod_{l \geq 0} J_l' \times D^l \to Y\]
+    The product yields a continuous map
+    \[\coprod_{k,l \geq 0} J_k \times J_l' \times D^{k+l} \cong (\coprod_{k \geq 0} J_k \times D^n) \times (\coprod_{l \geq 0} J_l' \times D^l) \xrightarrow{q\times q'} X\times Y\]
+    The composite satisfies condition 1 and 2 of the previous \enquote{recognition theorem} for CW-structures.
+
+    \textbf{Claim.} \(q\times q'\) is a quotient map.
+    \begin{proof}
+        \[(\coprod_{k \geq 0} J_k \times D^n) \times (\coprod_{l \geq 0} J'_l \times D^l) \xirghtarrow{\Id \times q'} (\coprod_{k \geq 0} J_k \times D^k)\times Y \xrightarrow{q \times Y} X\times Y\]
+        first: quoteint maps  because \(\coprrod_{k \geq 0} J_k \times D^k\) is disjoint union of compact spaces.
+        second: Quoteint map because \(Y\) is locally compact.
+    \end{proof}
+    Condition 3 of recognitnion theorem: Let \(A \subseteq X\times Y\) be a subset such that \(A \cap e_j^k \times e_j'^l = A \times (\bar{e_j^k} \times \bar{e_{j'}^l)\) is closed in \(\bar{e_j^k} \times \bar{e_{j'}^l}\) for all \(k \geq 0\), \(l \geq 0\), \(j \in J_k\), \(j' \in J_l\). Then \((q\times g')^{-1}(A) \cap ((j,j') \cap D^k \times D^l) = (q \times q')^{-1}\rvert_{(j,j') \times D^k \times D^l}(A \cap(\bar{e_j^k} \times \bar{e_{j'}^l}))\) is closed. Since \((q\times q')^{-1}(A)\) is closed and \(q\times q'\) is a quotient map, \(A \) is indeed closed in \(X \times Y\).
+\end{proof}
 
 
 
