@@ -259,14 +259,14 @@
 % \theoremstyle{theorem}
 \newtheorem{proposition}[lemma]{Proposition}
 \newtheorem{korollar}[lemma]{Korollar}
-\newtheorem{corollary}[lemma]{corollary}
+\newtheorem{corollary}[lemma]{Corollary}
 \newtheorem*{Korollar}{Korollar}
 \theoremstyle{definition}
 \newtheorem{frage}[lemma]{Frage}
 \newtheorem{definition}[lemma]{Definition}
 \newtheorem*{beispiel}{Example}
 \newtheorem{bsp}[lemma]{Example}
-\newtheorem*{example}{example}
+\newtheorem{example}[lemma]{Example}
 \newtheorem{aufgabe}{Aufgabe}
 \newtheorem{behauptung}[lemma]{Behauptung}
 \newtheorem*{bemerkung}{Bemerkung}

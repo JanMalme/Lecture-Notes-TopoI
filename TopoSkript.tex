@@ -213,67 +213,69 @@ From now on we often identify \(X\) with its image in \(X \cup_f J\times D^n\) a
     \end{enumerate}
 \end{defi}
 
-    \textbf{Remark.} 2. is equivalent to: A subset \(C\) of \(X\) is closed in \(X\) iff \(C\cap X_n\) is closed in \(X_n\) for all \(n \geq 0\).
+    \textbf{Remark.} 2. is equivalent to: a subset \(C\) of \(X\) is closed in \(X\) iff \(C\cap X_n\) is closed in \(X_n\) for all \(n \geq 0\).
 
     2. implies, that a map \(f\colon X\to Y\) is already continuous if \(f\rvert_{X_n}\colon X_n \to Y\) is continuous for all \(n \geq 0\).
 
 \begin{notation}
-    We usually say \((X,A)\) is a relative \(CW-complex\) and leave the \(X_n\) implicit.
-
-    For \(A = \emptyset\) \(X\) is called a absolute CW-complex, or just a CW-complex.
-
-    The subspace \(X_n\) in a CW-complex is the \(n\)-skeleton.
-
-    A relative CW-complex \((X,A)\) is finite-dimensional if \(X_n = X\) for some \(n \geq 0\).
-
-    A relative CW-complex \((X,A)\) is finite, if there are only finitely many cells altogether.
-
-    Once chosen a homeomorphism \(\psi\) as above, then the characteristic map  of the \(j\)-th \(n\)-cell is the composite
-    \[\begin{tikzcd}
-        D^n \ar[r, "{(j, \_)}"] & X_{n-1}\cup_{J\times \partial D^n} J \times D^n \ar[r, "\psi", "\cong"'] & X_n \ar[r, hook] & X
-    \end{tikzcd}\]
-
-    \(X_j\rvert_{\mathring{D^n}} \mapsto X_j(\mathring{D^n})\) is a homeomorphism  ... , which is one path component of \(X_n \setminus X_{n-1}\). The restriction \(f_j \colon X_j\rvert_{\partial D^n} \to X_{n-1}\) is called the attaching map as before.
+    \begin{itemize}
+        \item We usually say \((X,A)\) is a relative CW-complex and leave the \(X_n\) implicit.
+        \item For \(A = \emptyset\), \(X\) is called a absolute CW-complex, or just a CW-complex.
+        \item The subspace \(X_n\) in a CW-complex is the \(n\)-skeleton.
+        \item A relative CW-complex \((X,A)\) is finite-dimensional if \(X_n = X\) for some \(n \geq 0\).
+        \item A relative CW-complex \((X,A)\) is finite, if there are only finitely many cells altogether.
+        \item Once chosen a homeomorphism \(\psi\) as above, then the characteristic map  of the \(j\)-th \(n\)-cell \(\chi_j\) is the composite
+        \[\begin{tikzcd}
+            D^n \ar[r, "{(j, \_)}"] & X_{n-1}\cup_{J\times \partial D^n} J \times D^n \ar[r, "\psi", "\cong"'] & X_n \ar[r, hook] & X
+        \end{tikzcd}\]
+        \(\chi_j\rvert_{\mathring{D^n}} \colon \inner{D^n} \to \chi_j(\mathring{D^n})\) is a homeomorphism onto its image, which is one path component of \(X_n \setminus X_{n-1}\). The restriction
+        \[f_j \coloneq \chi_j\rvert_{\partial D^n}\colon \partial D^n \to X_{n-1}\]
+        is called the attaching map as before.
+    \end{itemize}
 \end{notation}
 
-Comment: The space \(X_n \setminus X_{n-1}\) is a disjoint union of open cells \(\mathring{D^n}\). So the indexing set could be taken as \(\pi_0(X_n\setminus X_{n-1})\).
+\textbf{Comment.} The space \(X_n \setminus X_{n-1}\) is a disjoint union of open cells \(\mathring{D^n}\). So the indexing set could be taken as \(\pi_0(X_n\setminus X_{n-1})\). Esspecially its cardinality is fixed.
 
-For every path-component of \(X_n \setminus X_{n-1}\) there exists a homeomorphism \(f \colon \mathring{D^n} \to pathcomponent\), that extends to a continuous map \(\bar f \colon D^n \to X_n\).
+It can be shown, that for every path-component of \(X_n \setminus X_{n-1}\) there exists a homeomorphism
+\[f \colon \mathring{D^n} \to \text{ that path-component}\]
+that extends to a continuous map \(\bar f \colon D^n \to X_n\).
 
 
 \begin{example}
-    Any discrete space is an absolute \(0\)-dimensional CW-complex.
+    \begin{itemize}
+        \item Any discrete space is an absolute \(0\)-dimensional CW-complex.
+        \item Let \(z \in S^n\) be any point. Then  the minimal CW-structure on \(S^n\) is
+        \[X_{-1} = \emptyset, \quad X_0 = \set{z} = X_1 = \dots = X_{n-1}\]
+        \[S^n = X_n = X_{n+1} = \dots\]
+        It consists of one \(0\)-cell and one \(n\)-cell. 
+        This can be seen, because \(S^n \cong D^n / \partial D^{n-1}\) by \(\partial D^{n-1} \to \set{z}\).
 
-    Let \(z \in S^n\) be any point. Then  the minimal CW-structure on \(S^n\) is \(X_{-1} = \emptyset, X_0 = \set{z} = X_1 = \dots = X_{n-1}\) \(X_n = X_{n+1} = \dots = S^n\). It consists of 1 \(0\)-cell and 1 \(n\)-cell. 
+        The CW-strucuture on a given space \(X\) is not unique. For example a different CW-structure on \(S^2\) consists of two of each \(0,1\) and \(2\)-cells. See figure \ref{fig:exS2} for the construction.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{pic/exS2.png}
+        \caption{\(S^2\) is built from several cells.}
+        \label{fig:exS2}
+    \end{figure}
+        Analog, \(S^n\) is a CW-complex with \(2\) \(i\)-cells for \(i = 0, \dots, n\).
 
-    \(S^n \cong D^n / \partial D^{n-1}\) \(z \leftarrow \partial D^{n-1}\)
+        Also a CW-structure: For \(S^1\) pick any finite subset \(A \subseteq S^1\). Then \(S^1\) has a CW-structure with \(X_{-1} = \emptyset, X_1 = A, X_2 = S^1\). n 0 cells n 1 cells.
 
-    Example \(X = S^n\) \(n \geq 2\) Another CW-structure:
+        It can be shown, that any non-discrete space, that admits an absolute CW-structure admits uncountably many different CW-structures.
 
-    picture
-
-    \(X_{-1} = \emptyset, X_0 = X_1 = \dots = X_{n-2} = \set{(1,0,\dots, 0)}\) \(X_{n-1} = equator = \set{(x,0) : x \in S^{n-1}}\)
-    \(X_n = X_{n+1} = \dots = S^n\)
-    1 0 cell 1  \(n-1\)-cell 2 \(n\)-cells
-    \(S^n \cong D^n \cup_{S^{n-1}} D^n\)
-
-    Example: \(S^2\) 2 1 cell 2 2 cell 2 0 cell 
-    picture
-
-    Analog for \(S^n\) is a CW-complex with \(2\) \(i\)-cells for \(i = 0, \dots, n\).
-
-    On \(S^1\) pick any finite subset \(A \subseteq S^1\). Then \(S^1\) has a CW-structure with \(X_{-1} = \emptyset, X_1 = A, X_2 = S^1\). n 0 cells n 1 cells.
-
-    Any non-discrete space, that admits an absolute CW-structure admits uncountably many different CW-structures.
-
-    Preview: The Euler characteristic of a finite absolute CW-comples is \(\chi(X) = \sum_{n \geq 0} (-1)^n \#n\text{-cells}\) does not depend on the CW-structure. We will eventually show this using singular homology. 
+        \item[\textbf{Preview.}] The Euler characteristic of a finite absolute CW-complex is
+        \[\chi(X) = \sum_{n \geq 0} (-1)^n \#n\text{-cells}\]
+        does not depend on the CW-structure. We will eventually show this using singular homology. 
+    \end{itemize}
 \end{example}
 
-Then: Let \((X,A)\) be a relative CW-complex.
-\begin{enumerate}
-    \item If \(A\) is Hausdorff, then so is \(X\).
-    \item If \(A\) is compact and \((X,A)\) is finite, then \(X\) is also compact.
-\end{enumerate}
+\begin{thm}{}{}
+    Let \((X,A)\) be a relative CW-complex.
+    \begin{enumerate}
+        \item If \(A\) is Hausdorff, then so is \(X\).
+        \item If \(A\) is compact and \((X,A)\) is finite, then \(X\) is also compact.
+    \end{enumerate}
+\end{thm}
 
 \begin{proof}
     Because \(X_{-1} = A\) is Hausdorff and \(X_n\) can be obtained from \(X_{n-1}\), by attaching cells, inductively \(X_n\) is Hausdorff for all \(n \geq 0\).
