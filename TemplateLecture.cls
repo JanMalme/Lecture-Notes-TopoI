@@ -259,6 +259,7 @@
 % \theoremstyle{theorem}
 \newtheorem{proposition}[lemma]{Proposition}
 \newtheorem{korollar}[lemma]{Korollar}
+\newtheorem{corollary}[lemma]{corollary}
 \newtheorem*{Korollar}{Korollar}
 \theoremstyle{definition}
 \newtheorem{frage}[lemma]{Frage}

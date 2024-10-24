@@ -416,7 +416,7 @@ Proving equivalence will be a task on an exercise sheet.
         Let \((X,A)\) and \((Y,B)\) be relative CW-complexes. Let \(f \colon X\to Y\) be a continous map, such that \(f(A) \subseteq B\). The map \(f\) is \emph{cellular} if  \(f(X_n) \subseteq Y_n\) for all \(n \geq 0\).
     \end{defi}
 
-    \begin{thm}{Cellular approximation}{}
+    \begin{thm}{Cellular approximation}{CAT}
         Let \((X,A)\), \((Y,B)\) be relative CW-complexes, and \(f\colon X \to Y\) continuous with \(f(A) \subseteq B\). Then \(f\) is homotopic, relative \(A\), to a cellular map.
     \end{thm}
 
@@ -540,8 +540,8 @@ Proving equivalence will be a task on an exercise sheet.
         The previous special case provides a homotopy \(H_j\colon D^m \times [0,1] \to Y\) relative \(\partial D^m\), from \(f_j\) to a map with image in \(Y_m\).
         We \enquote{glue} the homotopies and the constant homotopy on \(A\) to a homotopy on \(X\), i.e.
         \[A\times [0,1] \amalg J\times D^n \times [0,1] \to Y\] %arr const f\rvert_A \amalg \coprod_{j \in J} H_j
-        arrow down p\times [0,1] arrow right up \bar{H}
-        \[X\times [0,1] = (A\cup_{J\times \aprtial D^m} J\times D^m) \times [0,1]\]
+        %arrow down p\times [0,1] arrow right up \bar{H}
+        \[X\times [0,1] = (A\cup_{J\times \partial D^m} J\times D^m) \times [0,1]\]
         let \(p\colon A\amalg J\times D^n \to X\) be the quotient map.
         \(\bar H\) is continuous by the quotient property of \(p\times [0,1]\). \(\bar{H}\) is the desired homotopy. \(p\times [0,1]\) is a quotient map, which will be shown later.
     \end{proof}
@@ -670,10 +670,10 @@ Proving equivalence will be a task on an exercise sheet.
     \end{corollary}
     \begin{proof}
         \begin{itemize}
-            \item[\Ra] Apply the HEP to \(f\colon X \to X\times \set{0} \cup A \times [0,1]\) and \(x \mapsto (x,0)\)
+            \item[\(\Ra\)] Apply the HEP to \(f\colon X \to X\times \set{0} \cup A \times [0,1]\) and \(x \mapsto (x,0)\)
             \(H\colon A \times[0,1] \to \)%same space (a,t) \mapsto (a,t)
-            So the HEP gives a continuous mpa \(\bar H\colon X \times [0,1] \to X\times\set 0 \cup A \times [0,1]\). that extends f\& H
-            \item[\La] Let \(\gamma \colon X \times [0,1] \to X \times \set 0 \cup A \times [0,1]\) be a continuous retraction. Let \(f\colon X\to Y\), \(H\colon A \tiems [0,1] \to Y\) be a homotopy extension problem. Then
+            So the HEP gives a continuous map \(\bar H\colon X \times [0,1] \to X\times\set 0 \cup A \times [0,1]\). that extends f\& H
+            \item[\(\La\)] Let \(\gamma \colon X \times [0,1] \to X \times \set 0 \cup A \times [0,1]\) be a continuous retraction. Let \(f\colon X\to Y\), \(H\colon A \times [0,1] \to Y\) be a homotopy extension problem. Then
             \[X \times [0,1] \to X \times \set 0 \cup A \times [0,1] \to Y\]
             Then \(\bar H \coloneq \)%composite
             is a homotopy extension of \(f\) and \(H\).
@@ -716,7 +716,7 @@ Proving equivalence will be a task on an exercise sheet.
 
     We will inductively construct the following data: for \(m \geq -1\):
     \begin{itemize}
-        \item a continuous map \(f_m \colon X \o Y\)
+        \item a continuous map \(f_m \colon X \to Y\)
         \item Homotopy \(H_m \colon X \times [0, 1] \to Y\)
     \end{itemize}
     such that \(f_m\) is \enquote{cellular up to level \(m\)}, i.e. \(f_m(X_k) \subseteq Y_k\) for all \(k = -1, 0, \dots, m\).
@@ -790,20 +790,20 @@ Let \(X\) and \(Y\) be CW-complexes. The conadidate CW-structure on \(X\times Y\
 \end{thm}
 \begin{proof}
     We choose indexing sets and characteristic maps for the given CW-structure on \(X\) and \(Y\). This yields two quotient maps
-    \[q\colon \coprod_{k \geq 0} J_k \times D^k \to X \quad \q'\colon \coprod_{l \geq 0} J_l' \times D^l \to Y\]
+    \[q\colon \coprod_{k \geq 0} J_k \times D^k \to X \quad q'\colon \coprod_{l \geq 0} J_l' \times D^l \to Y\]
     The product yields a continuous map
     \[\coprod_{k,l \geq 0} J_k \times J_l' \times D^{k+l} \cong (\coprod_{k \geq 0} J_k \times D^n) \times (\coprod_{l \geq 0} J_l' \times D^l) \xrightarrow{q\times q'} X\times Y\]
     The composite satisfies condition 1 and 2 of the previous \enquote{recognition theorem} for CW-structures.
 
     \textbf{Claim.} \(q\times q'\) is a quotient map.
     \begin{proof}
-        \[(\coprod_{k \geq 0} J_k \times D^n) \times (\coprod_{l \geq 0} J'_l \times D^l) \xirghtarrow{\Id \times q'} (\coprod_{k \geq 0} J_k \times D^k)\times Y \xrightarrow{q \times Y} X\times Y\]
-        first: quoteint maps  because \(\coprrod_{k \geq 0} J_k \times D^k\) is disjoint union of compact spaces.
+        \[(\coprod_{k \geq 0} J_k \times D^n) \times (\coprod_{l \geq 0} J'_l \times D^l) \xrightarrow{\Id \times q'} (\coprod_{k \geq 0} J_k \times D^k)\times Y \xrightarrow{q \times Y} X\times Y\]
+        first: quoteint maps  because \(\coprod_{k \geq 0} J_k \times D^k\) is disjoint union of compact spaces.
         second: Quoteint map because \(Y\) is locally compact.
     \end{proof}
-    Condition 3 of recognitnion theorem: Let \(A \subseteq X\times Y\) be a subset such that \(A \cap e_j^k \times e_j'^l = A \times (\bar{e_j^k} \times \bar{e_{j'}^l)\) is closed in \(\bar{e_j^k} \times \bar{e_{j'}^l}\) for all \(k \geq 0\), \(l \geq 0\), \(j \in J_k\), \(j' \in J_l\). Then \((q\times g')^{-1}(A) \cap ((j,j') \cap D^k \times D^l) = (q \times q')^{-1}\rvert_{(j,j') \times D^k \times D^l}(A \cap(\bar{e_j^k} \times \bar{e_{j'}^l}))\) is closed. Since \((q\times q')^{-1}(A)\) is closed and \(q\times q'\) is a quotient map, \(A \) is indeed closed in \(X \times Y\).
+    Condition 3 of recognitnion theorem: Let \(A \subseteq X\times Y\) be a subset such that \(A \cap e_j^k \times e_j'^l = A \times (\bar{e_j^k} \times \bar{e_{j'}^l})\) is closed in \(\bar{e_j^k} \times \bar{e_{j'}^l}\) for all \(k \geq 0\), \(l \geq 0\), \(j \in J_k\), \(j' \in J_l\).
+    Then \((q\times g')^{-1}(A) \cap ((j,j') \cap D^k \times D^l) = (q \times q')^{-1}\rvert_{(j,j') \times D^k \times D^l}(A \cap(\bar{e_j^k} \times \bar{e_{j'}^l}))\) is closed. Since \((q\times q')^{-1}(A)\) is closed and \(q\times q'\) is a quotient map, \(A \) is indeed closed in \(X \times Y\).
 \end{proof}
-
 
 
 
