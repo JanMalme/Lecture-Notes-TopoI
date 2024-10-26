@@ -81,22 +81,25 @@
 \begin{titlepage}\pagenumbering{Roman}
   \centering
   \vspace{1cm}
-  {\scshape Universität Bonn \par}
+  {\scshape University of Bonn \par}
   \vspace{5cm}
-    {\large Mitschrift zur Vorlesung \par}
+    {\large notes for the lecture \par}
     \vspace{.5cm}
   {\huge \textbf{\LectureName{}} \par}
   \vspace{2cm}
-    {\large gehalten von \par}
+    {\large held by \par}
     \vspace{.5cm}
   {\huge \textbf{\ProfName{}} \par}
   \vspace{8cm}
-    {\large in digitaler Form übertragen von \par}
+    {\large \TeX{}ed by \par}
     \vspace{.5cm}
   {\Large \mName{} \par}
     \vfill
     {\large \Semester{} \par}
 \end{titlepage}
+
+\tableofcontents
+\newpage
 }
 
 \AtEndDocument{

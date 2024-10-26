@@ -1,8 +1,8 @@
 \documentclass{TemplateLecture}
 
-\renewcommand{\LectureName}{Lineare Algebra II}
+\renewcommand{\LectureName}{Topology I}
 \renewcommand{\ProfName}{Stefan Schwede}
-\renewcommand{\Semester}{SoSe 2024}
+\renewcommand{\Semester}{WiSe 2024/25}
 \renewcommand{\mName}{Jan Malmström}
 
 \begin{document}
@@ -279,97 +279,118 @@ that extends to a continuous map \(\bar f \colon D^n \to X_n\).
 
 \begin{proof}
     Because \(X_{-1} = A\) is Hausdorff and \(X_n\) can be obtained from \(X_{n-1}\), by attaching cells, inductively \(X_n\) is Hausdorff for all \(n \geq 0\).
-    Claim: Let \(O_n, P_n\) be open disjoint subsets of \(X_n\). Then there exist disjoint open subsets \(O_{n+1}, P_{n+1}\) of \(X_{n+1}\), such that \(O_n = O_{n+1} \cap X_n, P_n = P_{n+1} \cap X_n\).
+
+    \textbf{Claim.} Let \(O_n, P_n\) be open disjoint subsets of \(X_n\). Then there exist disjoint open subsets \(O_{n+1}, P_{n+1}\) of \(X_{n+1}\), such that \(O_n = O_{n+1} \cap X_n, P_n = P_{n+1} \cap X_n\).
     \begin{proof}
-        Since \(X_{n+1}\) can be obtained from \(X_n\) by attaching \((n+1)\)-cells \(X_n\) is a neighborhood retract in \(X_{n+1}\), i.e. there are open neighborhood \(V\) of \(X_n\) in \(X_{n+1}\) and a continuous retraction \(r\colon V\to X_n\) with \(r \rvert_{X_n} = \Id\). We set \(O_{n+1} = r^{-1}(O_n), P_{n+1} = r^{-1}(P_n)\).
+        Since \(X_{n+1}\) can be obtained from \(X_n\) by attaching \((n+1)\)-cells \(X_n\) is a neighborhood retract in \(X_{n+1}\), i.e. there is a open neighborhood \(V\) of \(X_n\) in \(X_{n+1}\) and a continuous retraction \(r\colon V\to X_n\) with \(r \rvert_{X_n} = \Id\). We set \(O_{n+1} = r^{-1}(O_n), P_{n+1} = r^{-1}(P_n)\).
+    \end{proof}
+    We proove the Hausdorff property: Let \(x,y \in X\) be disjoint points. Since \(X = \bigcup_{n \in \IN} X_n\). Then for some \(n \geq 0\), \(x,y \in X_n\). Since \(X_n\) is Hausdorff, there are open, disjoint subsets \(O_n, P_n\) of \(X_n\) with \(x \in O_n, y \in P_n\). Inductiveley use the claim to find open disjoint subsets \(O_m\), \(P_m\) of \(X_m\) for all \(m \geq n\), such that \(O_{m+1} \cap X_m = O_m, P_{m+1} \cap X_m = O_m\) for all \(m \geq n\). Then set \(O = \bigcup_{m \geq n} O_m, P = \bigcup_{m\geq n} PM\) disjoint subsets of \(X\) and open in \(X\) by the weak topology, as \(O\cap X_m = O_m\) open in \(X_m\).
 
-        Proof of the Hausdorff property: Let \(x,y \in X\) be disjoint points. Since \(X = \bigcup_{n \in \IN} X_n\). then for some \(n \geq 0\), \(x,y \in X_n\). Since \(X_n\) is Hausdorff, there are open, disjoint subsets \(O_n, P_n\) of \(X_n\) with \(x \in O_n, y \in P_n\). Inductiveleuse the claim to find open disjoint subsets \(O_m\), \(P_m\) of \(X_m\) for all \(m \geq n\), such that \(O_{m+1} \cap X_m = O_m, P_{m+1} \cap X_m = O_m\) for all \(m \geq n\). Then set \(O = \bigcup_{m \geq n} O_m, P = \bigcup_{m\geq n} PM\) disjoint subsets of \(X\) and open in \(X\) by the weak topology, as \(O\cap X_m = O_m\) open in \(X_m\).
-    \end{proof} 
-
-    Induction of \(n\) such that \(X_n\) is compact because \(X_n\) is obtained from \(X_{n-1}\) by attaching finitely many cells. Also \(X = X_n\)for sufficently large \(n\). So \(X\) is compact.
+    For compactness, Induction over \(n\), such that \(X_n\) is compact because \(X_n\) is obtained from \(X_{n-1}\) by attaching finitely many cells. Also \(X = X_n\) for sufficently large \(n\). So \(X\) is compact.
 \end{proof}
 
-Note: Suppose that \(X\) admits a CW-structure. Then the following are equivalent: \(X\) admits a finite CW-structure \(\Lra\) \(X\) is compact.
+\textbf{Note.} Suppose that \(X\) admits a CW-structure. Then the following are equivalent: \(X\) admits a finite CW-structure \(\Lra\) \(X\) is compact.
 
-From now on standing assumption: the base \(A\) in a relative CW-complex \(X,A\) is Hausdorff.Then \(X\) is also Hausdorff.
+From now on we assume, the base \(A\) in a relative CW-complex \(X,A\) is Hausdorff. Then \(X\) is also Hausdorff.
 
-Thus: Let \(X,A\) be a relative CW-complex.
-
-\begin{enumerate}
-    \item The closure of every open \(n\)-cell (\(=\) path component of \(X_n\setminus X_{n-1}\)) is compact.
-    \item Let \(\chi\colon D^n \to X\) be a characteristic map for some \(n\)-cell, then  the image \(\chi(D^n)\) is the closure of the open cell \(\chi(\mathring{D^n})\)
-    \item Let \(U\) be a subset of \(X\) s.t. \(A\subseteq U\). Suppose that the intersection of \(U\) with the closure of every cell is closed. Then \(U\) is closed in \(X\).
-\end{enumerate}
-
-Warning: the closure of a cell is not necessary a closed cell:
-
-minimal CW-tructure on \(S^2\) open 2-cell \(S^2\setminus \set{z}\) closure \(= S^2 \neq D^2\).
-
-\begin{proof}
+\begin{thm}{}{}
+    Let \(X,A\) be a relative CW-complex.
     \begin{enumerate}
-        \item By definition every open \(n\)-cells admits a characteristic map \(\chi\colon D^n \to X_n\) continuous s.t. \(\chi\rvert_{\mathring{D^n}}\) is a homeomorphis onto the open cells. Then \(\chi(D^n) \subseteq closure of open cell \chi(\mathring{D^n})\) so they are the same.
-        %%hlep
+        \item The closure of every open \(n\)-cell (\(=\) path component of \(X_n\setminus X_{n-1}\)) is compact.
+        \item Let \(\chi\colon D^n \to X\) be a characteristic map for some \(n\)-cell, then  the image \(\chi(D^n)\) is the closure of the open cell \(\chi(\mathring{D^n})\)
+        \item Let \(U\) be a subset of \(X\) s.t. \(A\subseteq U\). Suppose that the intersection of \(U\) with the closure of every cell is closed. Then \(U\) is closed in \(X\).
+    \end{enumerate}
+\end{thm}
 
+\textbf{Warning.} The closure of a cell is not necessary a closed cell.
+See for example the minimal CW-tructure on \(S^2\). The closure of the open 2-cell \(S^2\setminus \set{z}\) is \(S^2 \neq D^2\).
+
+\begin{proof}\leavevmode
+    \begin{enumerate}
+        \item By definition every open \(n\)-cells admits a characteristic map \(\chi\colon D^n \to X_n\) continuous s.t. \(\chi\rvert_{\mathring{D^n}}\) is a homeomorphis onto the open cell. Then
+        \[\chi(D^n) \subseteq \text{ closure of } \chi(\mathring{D^n})\]
+        and as \(D^n\) is compact, and \(X\) is Hausdorff, \(chi(D^n)\) is closed, so \(\chi(D^n) = \text{ closure of } \chi(\inner{D^n})\). As \(D^n\) is compact, this is also.
+
+        \item Already contained in 1.
+        
         \item Let \(U\subseteq X\) be as in \(2\). It suffices to show that \(U\cap X_n\) is closed in \(X_n\) for all \(n \geq 0\) (weak topology). We argue by induction on \(n\).
-        \(n = -1\) \(U\cap X_{-1} = U\cap A = A\) closed in \(A = X_{-1}\).
-        \(n \geq 0\) We choose a homeomorphism \(\psi\colon X_n \cong X_{n-1} \cup_{J\times \partial D^n} J\times D^n\) that is the in?? on \(X_{n-1}\). We let \(p\colon X_{n-1} \amalg J\times D^n \to X_{n-1} \cup_{J\times \partial D^n} J\times D^n \psi \cong \to X_n\) be the ?? 
-
-        \(p^{-1}(U\cap X_n = (U\cap X_{n-1}) \amalg \coprod_{j \in J} p^{-1}(U\cap closure of j-th n-cell))\) closed by hypothesis \(\subseteq X_{n-1} \amalg J\times D^n\)
-        \(\implies\) \(U\cap X_n\) is closed in \(X_n\)
+        \begin{description}
+            \item[\(n = -1\)] \(U\cap X_{-1} = U\cap A = A\) closed in \(A = X_{-1}\).
+            \item[\(n \geq 0\)]  We choose a homeomorphism \(\psi\colon X_n \cong X_{n-1} \cup_{J\times \partial D^n} J\times D^n\) that is the identity on \(X_{n-1}\). We let
+            \[p\colon X_{n-1} \amalg J\times D^n \to X_{n-1} \cup_{J\times \partial D^n} J\times D^n \cong X_n\]
+            be the quotient map. Then
+            \[p^{-1}(U\cap X_n) = \underbrace{(U\cap X_{n-1})}_{\text{closed by induction}} \amalg \coprod_{j \in J} p^{-1}\underbrace{(U\cap \text{ closure of j-th n-cell})}_{\text{closed by hypothesis}}\]
+            This is closed as a subspace of \( X_{n-1} \amalg J\times D^n\) and hence \(U\cap X_n\) is closed in \(X_n\)
+        \end{description}
     \end{enumerate}
 \end{proof}
 
-Rop: Let \(A\) be a Hausdorff-space, \(X = A \cup_f J\times D^n\) obtained from \(A\) by attaching \(n\)-cells. Let \(Y \subseteq X\) be a subspace, such that.
-\(Y \cap A\) is closed in \(A\)
-\(Y\) can be obtained from \(A \cap Y\) by attaching \(n\)-cells.
-\(Y \cap (J\times \inner{D^n})\) is a union of path components of \(J\times \inner{D^n}\).
-Then \(Y\) is closed in \(X\).
+\subsection{CW-subcomplexes}
+
+\begin{proposition}
+    Let \(A\) be a Hausdorff-space, \(X = A \cup_f J\times D^n\) obtained from \(A\) by attaching \(n\)-cells. Let \(Y \subseteq X\) be a subspace, such that
+    \begin{itemize}
+        \item \(Y \cap A\) is closed in \(A\)
+        \item \(Y\) can be obtained from \(A \cap Y\) by attaching \(n\)-cells.
+        \item \(Y \cap (J\times \inner{D^n})\) is a union of path components of \(J\times \inner{D^n}\).
+    \end{itemize}
+    Then \(Y\) is closed in \(X\).
+\end{proposition}
 
 \begin{proof}
-    Claim: If \(Y \cap \set{j} \times \inner{D^n} \neq \emptyset\) (\(\Lra\) \(j\times D^n inner \subseteq Y\)).
+    \textbf{Claim.} If \(Y \cap \set{j} \times \inner{D^n} \neq \emptyset\) (\(\Lra\) \(j\times \inner{D^n} \subseteq Y\)).
     Then \(Y\) contains the closure of \(j\times \inner{D^n}\) in \(X\). ( = the closure of this cell).
-
     \begin{proof}
-        \(Y\) can be obtained from \(Y \cap A\) by attaching \(n\)-cells and \(Y\setminus (Y\cap A)\) is a union fo some of the open cells of \(X\setminus A = J\times \inner{D^n}\). Let \(\chi \colon D^n \to Y\) be a characteristic map for the attaching of the \(j\)-th \(n\)-cell to \(Y\).
-        \(\chi(\inner{D^n}) = j \times \inner{D^n}\). Since \(D^n\) is compact, \(f(D^n)\) is quasicompact, and hence closed since \(X\) is Hausdorff. So \(j\times \inner{D^n} = \chi(D^n inner) \subseteq \chi(D^n) \subseteq Y \subseteq X\) closed so the closure of \(\chi\inner{D^n} = j \times \inner D^n\) is in \(\chi(D^n)\) is closed in \(Y\).
-
-        We let \(p\colon A \amalg J\times D^n \to A \cup_f J\times D^n = X\) be the quotient map. Then 
-        \(p^{-1}(Y) = (Y\cap A) \amalg \coprod_{j \in J Y \cap (j\times \inner{D^n}) \neq \emptyset} j\times D^n \amalg \coprod_{j \in J Y\cap (j\times \inner D^n) = \emptyset} p^{-1}(Y\cap A) \cap (j\times D^n)\) closed in \(j\times D^n\).
+        \(Y\) can be obtained from \(Y \cap A\) by attaching \(n\)-cells and \(Y\setminus (Y\cap A)\) is a union of some of the open cells of \(X\setminus A = J\times \inner{D^n}\). Let \(\chi \colon D^n \to Y\) be a characteristic map for the attaching of the \(j\)-th \(n\)-cell to \(Y\).
+        \(\chi(\inner{D^n}) = j \times \inner{D^n}\). Since \(D^n\) is compact, \(f(D^n)\) is quasicompact, and hence closed in \(X\) since \(X\) is Hausdorff. Then
+        \[j\times \inner{D^n} = \underset{\chi(\inner{D^n})}{\text{closed in } X} \subseteq \chi(D^n) \subseteq Y \subseteq X\]
+        and the closure of \(\chi\inner{D^n} = j \times \inner D^n\) is in \(\chi(D^n)\) and hence in \(Y\).  
     \end{proof}
-    %hlep
+    We let
+    \[p\colon A \amalg J\times D^n \to A \cup_f J\times D^n \cong X\]
+    be the quotient map. Then 
+    \[p^{-1}(Y) = (Y\cap A) \amalg \coprod_{\substack{j \in J \\ Y \cap (j\times \inner{D^n}) \neq \emptyset}} j\times D^n \amalg \coprod_{\substack{j \in J \\ Y\cap (j\times \inner D^n) = \emptyset}} p^{-1}(Y\cap A) \cap (j\times D^n)\]
+    So \(Y\) is closed in \(X\).
 \end{proof}
 
-Let \(X,A\) be a relative CW-complex and \(Y\) a closed subspace of \(X\) with \(A \subseteq Y\). Suppose that for all \(n \geq 0\), \(Y \cap X_n \setminus X_{n-1}\) is a disjoint union of path components of \(X_n \setminus X_{n-1}\). Then \(Y, A\) is a relative CW-complex with respect to the induced filtration.
-i.e.
-\(A = Y_{-1} \subseteq Y_0 = (X_0 \cap A) \subset eq Y_1 = X_1 \cap Y \dots\) %hlep
+\begin{thm}{}{}
+    Let \((X,A)\) be a relative CW-complex and \(Y\) a closed subspace of \(X\) with \(A \subseteq Y\). Suppose that for all \(n \geq 0\), \(Y \cap X_n \setminus X_{n-1}\) is a disjoint union of path components of \(X_n \setminus X_{n-1}\). Then \((Y, A)\) is a relative CW-complex with respect to the induced filtration, i.e.
+    \[A = Y_{-1} \subseteq Y_0 = (X_0 \cap Y) \subseteq Y_1 = X_1 \cap Y \subseteq \dots \subseteq Y_n = X_n \cap Y \subseteq \dots \]
+\end{thm}
 
-\begin{proof}
+\begin{proof}\leavevmode
     \begin{enumerate}
         \item \(Y_n\) can be obtained from \(Y_{n-1}\) by attaching \(n\)-cells.
-        let \(I = \set{j \in J\colon Y \cap (j\times\inner {D^n}) \neq \emptyset} = \set{j \in J : j\times \inner{D^n} \subseteq Y}\)
-        let \(\chi_j \colon D^n \to X_n \subset eq X\) be a charactreistic map for the \(j\)-th \(n\)-cell of \(X\).
-        If \(j \in I\), the \(\chi(D^n) = \text{closure of} \chi(\inner{D^n}) in\), hence closed in \(Y\) (\(Y\) closed).
-        So we can, and will, consider \(\chi\) as a map with target \(Y\cap X_n = Y_n\).
-        We get a continuous map \(\psi \colon Y_{n-1} \cup_{I\times \partial D^n} I\times D^n \to Y_n\) (induced \(\cup \coprod_{j \in J} \chi_j\)),
-        which is bijective because source and target are - as sets - both the disjoint union of \(Y_{n-1}\) and \(I \times \inner{D^n}\). We argue, that \(\psi\) is a closed map and hence a homeomorphism.
+        Let
+        \[I = \set{j \in J\colon Y \cap (j\times\inner {D^n}) \neq \emptyset} = \set{j \in J : j\times \inner{D^n} \subseteq Y}.\]
+        Let \(\chi_j \colon D^n \to X_n \subseteq X\) be a charactreistic map for the \(j\)-th \(n\)-cell of \(X\).
+        If \(j \in I\), then
+        \[\chi(D^n) = \text{closure of } \chi(\inner{D^n})\]
+        and since \(Y\) is closed, this is a closed subspace of \(Y\).
+        So we can (and will) consider \(\chi\) as a map with target \(Y\cap X_n = Y_n\).
+        We get a continuous map
+        \[\psi \colon Y_{n-1} \cup_{I\times \partial D^n} I\times D^n \to Y_n\]
+        (induced by \(\coprod_{j \in I} \chi_j\)),
+        which is bijective because source and target are - as sets - both the disjoint union of \(Y_{n-1}\) and \(I \times \inner{D^n}\). We argue, that \(\psi\) is a closed map and hence a homeomorphism. See
+        \[\begin{tikzcd}
+            Y_{n-1} \amalg I\times D^n \ar[rr, hook] \ar[d, "q"] & & X_{n-1} \amalg J\times D^n \ar[d, "p"]\\
+            Y_{n-1} \cup_{I \times \partial D^n} I\times D^n \ar[r, "\psi"] & Y_n \ar[r, phantom, "\subseteq"] & X_n \\
+        \end{tikzcd}\]
+        Let \(B\subseteq Y_{n-1} \cup_{I\times \partial D^n} I\times D^n\) be a closed subset, where \(f_j \colon \partial D^n \to X_{n-1}\) is the attaching map for the \(j\)-th \(n\)-cell i.e. \(f_j = \chi_j\rvert_{\partial D^n}\). Then
+        \[p^{-1}(\psi(B)) = \underset{q^{-1}(B)}{X_n \amalg I \times D^n} \amalg \coprod_{j \in J\setminus I} j\times f_j^{-1}(B \cap X_{n-1})\]
+        With \(f_j = \chi_j \rvert_{\partial D^n} \colon \partial D^n \to X_{n-1}\). As all these are closed, \(p^{-1}(\psi(B))\) is closed. Hence \(\psi(B)\) is closed in \(X_n\) and also in \(Y_n\).
 
-        \(Y_{n-1} \amalg I\times D^n\) arrow inclusion \(X_{n-1} \amalg J\times D^n\)
-        q quotient map          p quotient map.
-        \(Y_{n-1} \cup_{I \times \partial D^n} I\times D^n\) arrow \(\psi\) \(Y_n \subseteq X_n\) closed%%tikz
-
-        Let \(B\subseteq Y_{n-1} \cup_{I\times \partial D^n} I\times D^n\) be a closed subset, where \(f_j \colon \partial D^n \to X_{n-1}\) is the attaching map for the \(j\)-th \(n\)-cell i.e. \(f_j = \chi_j\rvert_{\partial D^n}\) Then
-        \(p^{-1}(\psi(B)) = q^{-1}(B)_{closed in Y \amalg I\times D^n, hence also in X_{n-1} \amalg J\times D^n} \cup \amalg_{j \in J\setminus I} j\times f_j^{-1}(B \cap X_{n-1})\) \(J\setminus I) \times D^n\) closed in \(J\setminus I) \times D^n\).
-
-        \item \(Y\) has the weak topology with respect  \(Y = Y \cap X = Y \cap (\bigcup_{n \geq 0} X_n) = \bigcup_{n \geq 0} (Y \cap X_n) = \bigcup_{n \geq 0} Y_n\).
-        let \(B \subseteq Y\) be a subset such that for all \(n \geq 0\), \(B\cap Y_n\) is closed in \(Y_n\). Since \(Y\) is closed in \(X\), \(Y_n\) is closed in \(X_n\), so \(B\cap Y_n is closed in X_n\). Since \(X\) has the weak topology, \(B\) is closed in \(X\), hence also in \(Y\).
+        \item \(Y\) has the weak topology with respect to
+        \[Y = Y \cap X = Y \cap (\bigcup_{n \geq 0} X_n) = \bigcup_{n \geq 0} (Y \cap X_n) = \bigcup_{n \geq 0} Y_n.\]
+        Let \(B \subseteq Y\) be a subset such that for all \(n \geq 0\), \(B\cap Y_n\) is closed in \(Y_n\). Since \(Y\) is closed in \(X\), \(Y_n\) is closed in \(X_n\), so \(B\cap Y_n\) is closed in \(X_n\). Since \(X\) has the weak topology, \(B\) is closed in \(X\), hence also in \(Y\).
     \end{enumerate}
 \end{proof}
 
 \begin{defi}{}{}
-    A CW-subcomplex of a relative CW-complex \((X,A)\) is a closed subspace \(Y\) of \(X\), such that \(A \subseteq Y\) and for all \(n \geq 0\) \(Y \cap (X_n\setminus{X_{n-1}})\) is a union of path components of \(X_n\setminus X_{n-1}\)
+    A CW-subcomplex of a relative CW-complex \((X,A)\) is a closed subspace \(Y\) of \(X\), such that \(A \subseteq Y\) and for all \(n \geq 0\) \(Y \cap (X_n\setminus{X_{n-1}})\) is a union of path components of \(X_n\setminus X_{n-1}\).
 \end{defi}
 
-Then \((Y,A)\) is a relative CW-complex with respect to the induced filtration.
+\textbf{Note.} Let \((Y,A)\) be a CW-subcomplex of \((X,A)\). Then \((Y,A)\) is a relative CW-complex with respect to the induced filtration.
 
 \begin{thm}{}{}
     Let \((X,A)\) be a relative CW-complex.
@@ -379,51 +400,56 @@ Then \((Y,A)\) is a relative CW-complex with respect to the induced filtration.
     \end{enumerate}
 \end{thm}
 
-Remark Historically first definition of CW-complex (J.H.C. Whitehead): A CW-complex is a space X equipped with a decomposition \(X = \dot\bigcup_{n \geq 0, i \in J_n} e_i^n\), such that
+\textbf{Remark.} The Historically first definition of CW-complexes (J.H.C. Whitehead). A CW-complex is a space X equipped with a decomposition \(X = \dot\bigcup_{n \geq 0, i \in J_n} e_i^n\), such that
 \begin{enumerate}
     \item \(e_i^n\) is homeomorphic do \(\inner{D^n}\).
     \item The closure of \(e_i^n\) is contained in the union of finitely many \(e^m_j\)-s (\enquote{closure finite}).
-    \item a subset \(Y\) of \(X\) is closed iff \(Y \cap \overline{e_i^n}\) is closed for all \(e_i^n\). then called weak topology.
+    \item a subset \(Y\) of \(X\) is closed iff \(Y \cap \overline{e_i^n}\) is closed for all \(e_i^n\). then called weak topology.\footnote{The equivalence of this definition to ours will be shown later.}
 \end{enumerate}
-Proving equivalence will be a task on an exercise sheet.
+
 
 \begin{proof}
     Since the closure of every cell is compact, \(1\) is a special case of 2.
 
     Let \(K\) be a compact subset of \(X\).
-    Claim 1: There is an \(n \geq 0\), such that \(K \subseteq X_n\).
+    \textbf{Claim } There is an \(n \geq 0\), such that \(K \subseteq X_n\).
+    \begin{proof}[Proof by contradiction.]
+        If \(K \not\subseteq X_n\) for all \(n \geq 0\). Then we can choose points in \(K\) \(x_1, x_2, x_3, \dots \in K\), such that \(x_i \in X_{n_i} \setminus X_{n_i -1}\) for some \(n_1 < n_2 < n_3 < \dots\).
+        Set \(D\coloneq \set{x_1, x_2, x_3, \dots}\).
 
-    Proof by contradiction. If \(K \not\subseteq X_n\) for all \(n \geq 0\). Then we can choose points in \(K\) \(x_1, x_2, x_3, \dots \in K\), such that \(x_i \in X_{n_i} \setminus X_{n_i -1}\) for some \(n_1 < n_2 < n_3 < \dots\).
-    Set \(D\coloneq \set{x_1, x_2, x_3, \dots}\)
-
-    subclaim: every subset of \(D\) is closed in \(X\).
-    Let \(S\subseteq D\) be any subset. Thus for all \(n \geq 0\) \(S\cap X_n\) is finite, hence closed in \(X\) (Hausdorff). In particular, \(D\) is
-    \[Closed in X, content in K \Ra D is compact\]
-    but \(D\) has discrete topology and \(D\) is infinite. contradiction.
+        \textbf{Subclaim.} Every subset of \(D\) is closed in \(X\).
+        Let \(S\subseteq D\) be any subset. Thus for all \(n \geq 0\) \(S\cap X_n\) is finite, hence closed in \(X\) (Hausdorff). In particular, \(D\) is
+        Closed in \(X\) and contained in \(K\) hence compact.
+        But \(D\) has discrete topology and \(D\) is infinite. Contradiction.
+    \end{proof}
 
     Now we assume that the compact subset \(K\) is contained in \(X_n\). We argue by induction over \(n\).
     \begin{description}
         \item[\(n = -1\)] If \(K\) is contained in \(A\), then  \(A,A\) is a finite CW complex.
-        \item[\(n \geq 0\)] We choose a representatoin \(X_n \cong X_{n-1} \cup_{J\times \partial D^n} J\times D^n\) We showed earlier, that \(K\) only meets finitely many of the \(n\)-cells in the interior. Set \(I = \set{j \in J : K \cap (j\times \inner{D^n}) \neq 0}\) a finite subset of \(J\).
-        Set \(L \coloneq K \cup \bigcup_{j \in I} (closure of j-th n-cell)_{compact}\) is compact.
-        Since \(X_{n-1} is closed in X\), \(L\cap X_{n-1}\) is closed in \(X_{n-1}\), and hence compact. So by induction, \(L\cap X_{n-1}\) is contained in some finite CW-subcomplex of \(X_{n-1},A\). Then \(K\) is contained in \(Y \cup_{I\times \partial D^n} I\times D^n\), another finite subcomplex of \(X,A\).
+        \item[\(n \geq 0\)] We choose a representatoin \(X_n \cong X_{n-1} \cup_{J\times \partial D^n} J\times D^n\) We showed earlier, that \(K\) only meets finitely many of the \(n\)-cells in the interior. Set
+        \[I = \set{j \in J : K \cap (j\times \inner{D^n}) \neq 0}\]
+        a finite subset of \(J\).
+        Set
+        \[L \coloneq K \cup \bigcup_{j \in I} \underbrace{(\text{ closure of \(j\)-th \(n\)-cell})}_{\text{compact}}\]
+        Note that \(L\) is compact.
+        Since \(X_{n-1}\) is closed in \(X\), \(L\cap X_{n-1}\) is closed in \(X_{n-1}\), and hence compact. So by induction, \(L\cap X_{n-1}\) is contained in some finite CW-subcomplex of \((X_{n-1},A)\). Then \(K\) is contained in \(Y \cup_{I\times \partial D^n} I\times D^n\), another finite subcomplex of \((X,A)\).
     \end{description}
 \end{proof}
 
-    \subsection{Cellular approximation theorem}
+\subsection{Cellular approximation theorem}
 
-    We will formulate the cellular approximation theorem and spend some time to prove it.
+We will formulate the cellular approximation theorem and spend some time to prove it.
 
-    \begin{defi}{}{}
-        Let \((X,A)\) and \((Y,B)\) be relative CW-complexes. Let \(f \colon X\to Y\) be a continous map, such that \(f(A) \subseteq B\). The map \(f\) is \emph{cellular} if  \(f(X_n) \subseteq Y_n\) for all \(n \geq 0\).
-    \end{defi}
+\begin{defi}{}{}
+    Let \((X,A)\) and \((Y,B)\) be relative CW-complexes. Let \(f \colon X\to Y\) be a continous map, such that \(f(A) \subseteq B\). The map \(f\) is \emph{cellular}\index{cellular map} if  \(f(X_n) \subseteq Y_n\) for all \(n \geq 0\).
+\end{defi}
 
-    \begin{thm}{Cellular approximation}{CAT}
-        Let \((X,A)\), \((Y,B)\) be relative CW-complexes, and \(f\colon X \to Y\) continuous with \(f(A) \subseteq B\). Then \(f\) is homotopic, relative \(A\), to a cellular map.
-    \end{thm}
+\begin{thm}{Cellular approximation}{CAT}
+    Let \((X,A)\), \((Y,B)\) be relative CW-complexes, and \(f\colon X \to Y\) continuous with \(f(A) \subseteq B\). Then \(f\) is homotopic, relative \(A\), to a cellular map.
+\end{thm}
 
-    Reminder: \enquote{relatively homotopic} means, there is a homotopy \(H\colon X\times [0,1] \to Y\), such that \(f = H(\_, 0) \colon X \to Y\), \(H(\_, 1\colon X \to Y)\) is cellular, \(H(a,t) = f(a)\) for all \(a \in A, t \in [0,1]\).
-<
+Reminder: \enquote{relatively homotopic} means, there is a homotopy \(H\colon X\times [0,1] \to Y\), such that \(f = H(\_, 0) \colon X \to Y\), \(H(\_, 1\colon X \to Y)\) is cellular, \(H(a,t) = f(a)\) for all \(a \in A, t \in [0,1]\).
+
 \begin{example}
     Consider a minimal CW-structure on \(S^n\), i.e. one \(0\)-cell and one \(n\)-cell.
     \(A = X_{-1} = \set{z} = X_0 = \dots = X_{n-1} \subseteq X_n = S^n\).
