@@ -740,19 +740,28 @@ We will formulate the cellular approximation theorem and spend some time to prov
         is a quotient map.
     \end{proof}
 
-    \subsubsection*{Homotopy extension property}
+    \subsubsection{Homotopy extension property}
+
     \begin{defi}{}{}
-        Let \(X\) be a space and \(A\) a subspace of \(X\). Then \(X,A\) has the \emph{homotopy extension property}\index{homotopy extension property}, if the following holds: let \(f\colon X\to Y\) be a continuous map and let \(H\colon A\times [0,1] \to Y\) be a homotopy starting with \(f\rvert_A\), i.e. for all \(a \in A\) \(H(a,0) = f(a)\). Then there is a homotopy \(\bar H \colon X \times [0,1] \to Y\) starting with \(f\)and extending \(H\), i.e.
+        Let \(X\) be a space and \(A\) a subspace of \(X\). Then \((X,A)\) has the \emph{homotopy extension property}\index{homotopy extension property}, if the following holds: let \(f\colon X\to Y\) be a continuous map and let \(H\colon A\times [0,1] \to Y\) be a homotopy starting with \(f\rvert_A\), i.e. for all \(a \in A\), \(H(a,0) = f(a)\). Then there is a homotopy
+        \[\bar H \colon X \times [0,1] \to Y\]
+        starting with \(f\)and extending \(H\), i.e.
         \begin{itemize}
             \item for all \(x \in X\), \(\bar H(x,0) = f(x)\)
             \item for all \((a,t) \in A\times [0,1], \bar H(a,t) = H(a,t)\).
         \end{itemize}
     \end{defi}
-    \begin{lem}
-        A pair \((X,A)\) has the HEP if and only if for every continuous map \(g\colon X\cup_A A \times [0,1] \to Y\), there is a continuous extension to \(X\times [0,1] \to Y\). Here \(X \cup_A A \times [0,1] \coloneq (X\amalg A \times [0,1])/\sim\) with \(a \sim (a,0)\) for all \(a \in A\).
-        Beware: \(X\cup_A A\times [0,1] \to X \times \set{0} \cup A \times [0,1] \subseteq X \times [0,1]\) \(x \mapsto (x,0), (a,t) \mapsto (a,t)\)
-        need not be a homeomorphism.
+
+    \begin{lem}{}{}
+        A pair \((X,A)\) has the HEP if and only if for every continuous map \(g\colon X\cup_A A \times [0,1] \to Y\), there is a continuous extension to \(X\times [0,1] \to Y\). Here
+        \[X \cup_A A \times [0,1] \coloneq (X\amalg A \times [0,1])/\sim\]
+        with \(a \sim (a,0)\) for all \(a \in A\).
     \end{lem}
+
+    \textbf{Warning.}
+    \[X\cup_A A\times [0,1] \to X \times \set{0} \cup A \times [0,1] \subseteq X \times [0,1]\] \(x \mapsto (x,0), (a,t) \mapsto (a,t)\)
+        need not be a homeomorphism.
+
     \begin{proposition}
         The  ?? \((f, H)\) of a homotopy extension property is equally defined to a continuous map
         \[\]%tikz
