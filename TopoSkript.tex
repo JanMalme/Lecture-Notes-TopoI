@@ -1082,18 +1082,139 @@ picture
 This defines a binary operation \(\pi_n'(X,x) \times \pi_n'(X,x) \to \pi_n'(X,x)\)
 %%hlep f,g \mapsto S^n \pinch S^n \vee S^n \to f\vee g X.
 
-We will not proove, this is the same group structure as we will not use it.
+We will not proove, that this is the same group structure as we will not use it.
 
 
+\begin{thm}{Functoriality of higher homotopy groups}{}
+    Let \(X,Y\) be spaces, \(A \subseteq X\), \(B\subseteq Y\) and \(x \in X\), \(y \in Y\).
+    Let \(f\colon X \to Y\) be a continuous map with \(f(A) \subseteq B\). \(f(x) = y\).
+    Then we define
+    \[f_*\colon \pi_n(X,A,x) \to (Y,B, y)\]
+    by postcomposition with \(f\).
+    \[f_* [g\colon (I^n, \partial I^n, J^{n-1}) \to (X,A,x)] \coloneq [f\circ g\colon (I^n, \partial D^n, J^{n-1}) \to (Y,B,y)]\]
+    We con also postcompone \(f\) with triple homotopis, so this is well defined.
+\end{thm}
 
+\begin{lem}{}{}
+    Let \(f\colon X,A,x) \to (Y,B,y)\) be a continuous map of triples. Then \(f_*\colon \pi_n(X,A,x) \to \pi_n(Y,B,y)\) is a group homomorphism.
+    Let \(f'\colon (Y,B,y) \to (Z,C,z)\) be another continuous map of triples. Then
+    \[(f' \circ f)_* = f'_* \circ f_*\colon \pi_n(X,A,x) \to \pi_n(Z,C,z)\]
+    \[\Id_X)_* = \Id_{\pi_n(X,A,x)}\]
+\end{lem}
 
+\begin{proof}
+    All relations already hold on the level of representatives, no homotopies needed.
+    E.g.
+    \[g_1, g_2\colon (I^n \partial I^n, J^{n-1}) \to (X,A,x) : (f\circ g_1) + (f\circ g_2) = f\circ (g_1 +g_2)\]
+    and
+    \[f' \circ (f\circ g_1) = (f' \circ f) \circ g_1\]
+\end{proof}
 
+\textbf{Dependence on the basepoint.}
 
+The relative case: Given \(X,A, x_0, x_1\), \(X \supseteq A \ni x_0, x_1\). Let \(w\colon [0,1] \to A\) be a path from \(x_0\) to \(x_1\), i.e. \(w(0) = x_0, w(1) = x_1\). We define a map\footnote{Note, that this is not the before discussed functor star.}
+\[w_*\colon \pi_n(X,A,x_0) \to \pi_n(X,A,x_1)\]
+by \(w_*[f]\) = picture
 
+Well defined on triple hommotopy classes. 
 
+\begin{proposition}
+    Let \(X,A\) be a space pair and \(w\colon [0,1] \to A\) a path. Set \(x_0 = w(0)\), \(x_1 = w(1)\).
+    \begin{enumerate}
+        \item The map \(w_*\colon \pi_n(X,A,x_0) \to \pi_n(X,A, x_1)\) is a group homomorphism.
+        \item If \(w'\colon [0,1] \to A\) is another path that is homotopic to \(w\) relative \(\set{0,1}\), then \(w_* = w_*'\).
+        \item Let \(v\colon [0,1] \to A\) be another path with \(v(0) = w(1)\). \(x_2 = v(1)\)
+    \end{enumerate}
+    Then
+    \[v_*(w_*[f]) = (v * w)_*[f] \colon \pi_n(X,A,x_0) \to \pi_n(X,A,x_2)\]
+    wherein \(*\) is concatination of paths.
 
+    Let \(c\colon [0,1] \to A\) be the constant path at \(x_0\). Then \(c_* = \Id_{\pi_n(X,A,x_0)}\)
 
+    The homomorphism \(w_*\) is an isomorphism of groups.
+\end{proposition}
 
+\begin{proof}
+    %Yay pictures 
+    v) Let \(\bar w\colon [0,1] \to A\) be the reverse path, \(\bar w(t) = w(1-t)\).
+    Then \(\bar w_* \circ w_* = (\bar w * w)_* = c_x = \Id_{\pi_n(X,A,x_0)}\), so \(w_* \circ \bar w_* = \Id\), so both must be group isomorphisms.
+
+    In hatcher page 339 there are explicit formulas.
+\end{proof}
+
+\textbf{Comment.} as a special case, the fundamental group \(\pi_1(A,x_0)\) acts on \(\pi_n(X,A,x_0)\) through group homomorphism.
+
+Absolute Case: \(\pi_n(A, \set{x}, x) = \pi_n(A,x)\).
+Let \(w\colon [0,1] \to A\) be a path from \(x_0 = w(0)\) to \(x_1 = w(1)\). this defines a map \(w_*\colon \pi_n(A,x_0) \pi_n(A,x_1)\) by
+\(w_*[f]\) = pictures!
+
+\begin{proposition}
+    In the absolute situation, \(w_* \colon \pi_n(A,x_0) \to \pi_n(A, x_1)\) is a group isomorphism, that only depends on the homotopy class of \(w\) relative endpoints. For \(v\colon [0,1] \to A\) with \(v(0) = w(1) = x_1\), then
+    \[v_* \circ w_* = (v\circ w)_*, (\const_{x_0})_* = \Id_{\pi_n(A,x_0)}\]
+\end{proposition}
+
+%\begin{remark}
+    A space \(X\) is simply connected if it is path connected and for some (hence any) basepoint \(x \in X\), the fundamental group \(\pi_1(X,x)\) is trivial. Then any two points \(x_0, x_1\) can be connected by a path \(w\), and any two paths from \(x_0\) to \(x_1\) are homotopic relative end points.
+
+    So in this special case, there is a \enquote{canonical} isomorphism \(\pi_n(X,x_0) \cong \pi_n(X,x_1)\).
+%\end{remark}
+
+\begin{defi}{}{}
+    A sequence of groups and group homomorphisms
+    \[A \xrightarrow{f} B \xrightarrow{g} C\]
+    is \emph{exact}\index{exact sequences} if \(\Img(f) = \ker(g)\).
+
+    A sequence of based sets
+    \[A \xrightarrow{f} B \xrightarrow{g} C\]
+    is exact, if \(\Img(f) = \set{b \in B: g(b) = *}\) with \(*\) a basepoint of \(C\).
+\end{defi}
+
+\begin{example}
+    A sequence of maps of based sets
+    \[A \ar{f} B \ar{g} C = \set x\]
+    is exact iff \(f\) is surjective.
+
+    A sequence of group homomorphisms
+    \[A = \set 1 \ar{f} B \ar g C\]
+    is exact iff \(g\) is injective.
+\end{example}
+
+\begin{defi}
+    Let \(X\) be a space, \(A\) a subspace of \(X\), \(x \in A\). We define the \emph{long exact homotopy group sequence}:
+    \[\pi_n(A,x) \ar{i_*} \pi_n(X,x) \ar{j_*} \pi_n(X,A,x) \ar{\partial} \pi_{n-1}(A,x)\]
+    where \(\partial\) is the connecting homomorphism \(\partial[f\colon (I^n \partial I^n, J^{n-1}) \to (X,A,x)] = [f\rvert_{I_{n-1}} \colon (I^{n-1}, \partial I^{n-1}) \to (A,x)]\) we use \(I^{n-1} \cap J^{n-1} = \partial I^{n-1}\).
+
+    The sequence goes indefinetely to the left and ends in
+    \[\pi_1(X,x) \ar{j_*} \underset{\pi_1(X,A,x)}{\text{based set}} \ar \partial \pi_0(A) \ar{i_*} \pi_0(X)\]
+\end{defi}
+
+\begin{thm}
+    For every \((X,A,x)\), the long homotopy gropu sequence is exact, i.e. all subsequences consisting of two adjacent composite maps is exact.
+\end{thm}
+
+\begin{proposition}
+    \enquote{Compression criterian} Let \(f \colon (I^n, \partial I^n, J^{n-1}) \to (X,A,x)\) be a map of triples. Then the following are equivalent:
+    \begin{enumerate}
+        \item \(f\) represents the neutral element in \(\pi_n(X,A,x)\)
+        \item \(f\) is homotopic relative \(\partial I^n\) to a map with image in \(A\).
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{description}
+        \item[\(1 \implies 2.\)]  If \(f\) represents the neutral element, then it is triple homotopic to the constant map at \(x\). Let \(H\colon I^n \times [0,1] \to X\) be a triple homotopy, that witnesses this. Then
+        \[H(\_, 0) = f, H(\_, 1) \text{ is constant at }x\]
+        \(H(\partial I^n \times [0,1]) \subseteq A\), \(H(J^{n-1}\times [0,1]) \subseteq \set x\). We reparametrize \(H\) by a specific continuous map \(Q\colon I^n \times [0,1] \to I^n \times [0,1]\) picture! The map \(Q\) sends \(I^n \times \set t\) affine linearly onto the intersection of \(I^n \times [0,1)\) and \(\spn(\IR^{n-1} \times {(0,0)} and (0,0,\dots, 0, \cos(\pi t/2), \sin(\pi t/2)))\)
+        Properties of \(Q\):
+        \(Q(x_1, \dots, x_{n-1},0,t) = (x_1, \dots , x_{n-1},0,0)\) for all \(t \in [0,1]\).
+        \(Q(x_1, \dots, x_{n-1}, x_n, 0) = (x_1, \dots, x_{n-1}, x_n,0)\)
+        \(Q(x_1, \dots, x_{n-1}, x_n, 1) = (x_1, \dots, x_{n-1}, 0, x_n)\).
+
+        Now we define \(K \coloneq H \circ Q\colon I^n \times [0,1] \to X\) This is a homotopy relative \(\partial I^n\) from \(f\) to a map with image in \(A\).
+        \item[\(2. \implies 1\)] Suppose that \(f \colon (I^n, \partial I^n, J^{n-1}) \to (X,A, x)\) is homotopic relative \(\partial I^n\) to a map with image in \(A\). A homotopy relative \(\partial I^n\) is in particular a Triple homotopy, without loss \(f\) itself has image in \(A\).
+        
+        We let \(H\colon I^n \times [0,1] \to I^n\) be a deformation tetraction of \(I^n\) onto \(J^{n-1}\). Then \(f\circ H\colon I^n \times [0,1] \to X\) is a homotopy from \(f\) to the constant map at \(x\). and \((f\circ H)(I^{n-1} \times [0,1]) \subseteq A\), so \(f\circ H\) ?? that \([f] = *\) in \(\pi_n(X,A,x)\) 
+    \end{description}
+\end{proof}
 
 
 \section{singular homology groups}
