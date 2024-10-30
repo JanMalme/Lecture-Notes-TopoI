@@ -742,7 +742,7 @@ We will formulate the cellular approximation theorem and spend some time to prov
 
     \subsubsection{Homotopy extension property}
 
-    \begin{defi}{}{}
+    \begin{defi}{Homotopy extension property}{HEP}
         Let \(X\) be a space and \(A\) a subspace of \(X\). Then \((X,A)\) has the \emph{homotopy extension property}\index{homotopy extension property}, if the following holds: let \(f\colon X\to Y\) be a continuous map and let \(H\colon A\times [0,1] \to Y\) be a homotopy starting with \(f\rvert_A\), i.e. for all \(a \in A\), \(H(a,0) = f(a)\). Then there is a homotopy
         \[\bar H \colon X \times [0,1] \to Y\]
         starting with \(f\)and extending \(H\), i.e.
@@ -753,9 +753,10 @@ We will formulate the cellular approximation theorem and spend some time to prov
     \end{defi}
 
     \begin{lem}{}{}
-        A pair \((X,A)\) has the HEP if and only if for every continuous map \(g\colon X\cup_A A \times [0,1] \to Y\), there is a continuous extension to \(X\times [0,1] \to Y\). Here
+        A pair \((X,A)\) has the HEP if and only if for every continuous map \(g\colon X\cup_A A \times [0,1] \to Y\), there is a continuous extension \(\bar H\colon X\times [0,1] \to Y\) of \(g\). Here
         \[X \cup_A A \times [0,1] \coloneq (X\amalg A \times [0,1])/\sim\]
         with \(a \sim (a,0)\) for all \(a \in A\).
+        %\begin{tikz
     \end{lem}
 
     \textbf{Warning.}
@@ -795,6 +796,7 @@ We will formulate the cellular approximation theorem and spend some time to prov
     \end{proposition}
     We exhibit a retraction \(r\colon D^m \times [0,1] \to D^m \times \set 0 \cup \partial D^m \times [0,1]\) to the inclusion.
     For \((x,t) \) in \(D^m \times [0,1]\), the line through \((x,t)\) and \((0,2)\) meets \(D^m \times 0 \cup \partial D^m \times [0,1]\) in exactly one point that varies continuously with \((x,t)\), this point defines \(r(x,t)\).
+    picture
 
     \begin{proposition}
         Let \(X\) be a space obtained by attaching \(m\)-cells to \(A\). Then \((X,A)\) has the HEP.
@@ -894,7 +896,7 @@ Let \(X\) and \(Y\) be CW-complexes. The conadidate CW-structure on \(X\times Y\
 \(q\colon (\partial D^2)_{\text{discret}} \amalg D^2 \to D^2\) the tautological map. This does not define a CW-structure on \(D^2\). The ffiniteness in 2 fails. Because \(\partial D^2\) is not contained in a finite union of cells of dimension \(\leq 1\).
 
 \begin{thm}{}{}
-    Let \(X,Y\) be CW-complexes such that \(Y\) is locally compact. Then \((X\times Y)_n \coloneq \bigcup_{k \leq n} X_k \times Y_{n-k}\) defines a CW-structure on \(X \times Y\).
+    Let \(X,Y\) be CW-complexes such that \(Y\) is locally compact. Then \((X\times Y)_n \coloneq \bigcup_{k \leq n} X_k \times Y_{n-k}\) defines a CW-structure on \(X \times Y\).%%Product filtration
 
     The \(n\)-cells of this \emph{product CW-structure}\index{product CW-structure} biject with pairs of
     \[\bigcup_{k = 0, \dots, n} (k \text{-cells of } X) \times ((n-k)\text{-cells of Y})\]
@@ -916,10 +918,183 @@ Let \(X\) and \(Y\) be CW-complexes. The conadidate CW-structure on \(X\times Y\
     Then \((q\times g')^{-1}(A) \cap ((j,j') \cap D^k \times D^l) = (q \times q')^{-1}\rvert_{(j,j') \times D^k \times D^l}(A \cap(\bar{e_j^k} \times \bar{e_{j'}^l}))\) is closed. Since \((q\times q')^{-1}(A)\) is closed and \(q\times q'\) is a quotient map, \(A \) is indeed closed in \(X \times Y\).
 \end{proof}
 
+\begin{example}
+    A CW-complex \(Y\) is locally compact for example if
+    \begin{itemize}
+        \item \(Y\) is finite.
+        \item locally finite, i.e. every point has some finite subcomplex as a neighborhood.
+    \end{itemize}
+\end{example}
 
-
+\textbf{Non-example.} \(X = \bigvee_{n \in \IN} S^1\). In the point where all \(S^1\) meet, no neighborhood is contained in any subcomplex. \(Y = \bigvee_J S^1\) for some uncountable set \(Y\). The product filtration on \(X \times Y\) does not define a CW-structure.
 
 \section{Higher homotopy groups}
+
+At some point we will prove Whiteheads theorem.
+
+\begin{thm}{Whitehead}{Whitehead}
+    Let \(f\colon X\to Y\) be a continuous map between pathconnected CW-complexes. Suppose the map \(f_* = \pi_n(f)\colon \pi_n(X,x) \to \pi_n(Y, f(x))\) is an isomorphism for all \(n \geq 1\) and some (hence all) \(x \in X\).
+    Then \(f\) is a homotopy equivalence.
+\end{thm}
+
+\(\pi_n\) is the \(n\)-th homotopy group of \(X\) based at \(x \in X\).
+
+Remeber: A map inducing isomorphism on homotopy groups already is a homotopy equivalence.
+
+\begin{defi}{}{}
+    Let \(Y\) be a space and \(B\) a subspace of \(Y\), \(n \geq 0\). The pair \((Y,B)\) is \(n\)-connected if:
+    \begin{itemize}
+        \item for every \(0 \leq m \leq n\) and every continuous map \(g\colon D^m \to Y\) wit \(g(\partial D^m) \subseteq B\) there is a homotopy relative \(\partial D^m\) to a map with image in \(B\).
+    \end{itemize}
+
+    The inclusion \(B \hookrightarrow Y\) is a \emph{weak homotopy equivalence} if it is \(n\)-connected for all \(n \geq 0\).
+\end{defi}
+
+Whitehead theorem can be reformulated as weak homotopy equivalence is homotopy equivalence in CW-complexes.
+
+\textbf{Remarks.} \begin{itemize}
+    \item \(n\)-connected implies \(n-1\)-connected.
+    \item \((Y,B)\) is \(0\)-connected \(\Lra\) every point of \(Y\) can be connected by a path to a point in \(B\). \(\Lra\) the map \(\pi_0(B) \to \pi_0(Y)\) is surjective.
+    \item \((Y,B)\) is \(1\)-connected \(\Lra\) the map \(\pi_0(B) \to \pi_0(Y)\) is bijective, and for all \(b \in B\) the map \(\pi_1(B,b) \to \pi_1(Y,b)\) is surjective.
+\end{itemize}
+We will be able to reformulate using higher homotopy groups later.
+\begin{itemize}
+    \item Suppose that \(B\) is a deformation retract of \(Y\), i.e. there is a homotopy \(H\colon Y \times [0,1] \to Y\), relative \(B\) from \(\Id_Y\) to a map with image in \(B\).
+    Then the inclusion \(B \hookrightarrow Y\) is a weak homotopy equivalence.
+    Let \(g\colon D^m \to Y\) with \(g(\partial D^m) \subseteq B\) be given. Then the composite
+    \[\begin{tikzcd}
+        {D^m \times [0,1]} \ar[r, "{g\times [0,1]}"] & {Y \times [0,1]} \ar[r, "H"] & Y \\
+    \end{tikzcd}\]
+    is a homotopy relative \(\partial D^m\) from \(g\) to a map with image in \(B\).
+\end{itemize}
+
+\begin{thm}{}{}
+    Let \((X,A)\) be a relative CW-complex and \((Y,B)\) an \(n\)-connected space pair (\(n \geq 0\)). Let \(f\colon X \to Y\) be a continuous map with \(f(A) \subseteq B\). Then \(f\) is homotopic relative \(A\) to a map \(g\colon X \to Y\) such that \(f(X_n) \subseteq B\).
+\end{thm}
+
+\begin{proof}
+    We construct a sequence of continuous maps \(f = f_{-1}, f_0, f_1, \dots, f_n = g\) such that
+    \begin{itemize}
+        \item \(f_m\) is homotopic to \(f_{m-1}\) relative \(X_{m-1}\).
+        \item \(f_m(X_m) \subseteq B\).
+    \end{itemize}
+    We start with \(f_{-1} = f\). Suppose now that \(f_{m-1}\) has been constructed, \(0 \leq m \leq n\).
+
+    Choose a presentation \(\psi\colon X_m \cong X_{m-1} \cup_{J \times \partial D^m} J\times D^n\). The characteristic maps for the \(m\)-cells are maps \(\chi_j\colon D^m \to X_m, j \in J\). Since \((Y,B)\) is \(n\)-connected, the composite
+    \[\begin{tikzcd}
+        D^m \ar[r, "\chi_j"] & X_m \ar[r, hook] & X \ar[r, "f_{m-1}"] & Y \\
+    \end{tikzcd}\]
+    Since \(\partial D^m\) into \(B\) and \(m \leq n\), there is a homotopy \(H_j \colon D^m\times [0,1] \to Y\) relative \(\partial D^m\) to a map with image in \(B\). These data together define a homotopy
+    \[H\colon J\times D^m \times [0,1] \to Y\]
+    relative \(J\times \partial D^m\) \((j,x,t) \mapsto H_j(x,t)\) from \(f_{m-1}\rvert_{X_m} \circ \chi\) to a map with image in \(B\).
+
+    We glue \(H\) and the constant homotopy of
+    \(f_{m-1}\rvert_{X_{m-1}}\)
+    \[X_m \times [0,1] \cong X_{m-1} \times [0,1] \cup_{J \times \partial D^m \times [0,1]} J\times D^m \times [0,1] \to Y\] % const \cup H
+    This is a homotopy from \(f_{m-1}\rvert_{X_m}\) to a map with image in \(B\). The HEP of the pair \((X, X_m)\) lets us extend this to a homotopy from \(f_{m-1}\) to a map \(f_m\) with \(f_m(X_m) \subseteq B\). This finishes the induction, hence the proof.
+\end{proof}
+
+
+We will define the higher homotopy groups \(\pi_n(X,A,\set{x})\).
+
+\textbf{Notation.} \(I = [0,1]\), \(I^n = [0,1]^n = n\)-cube. \(\partial I^n = \set{(x_1, \dots, x_n) \in I^n : x_i \in {0,1} \text{ for some } 1 \leq i \leq n}\) We identify \(I^{n-1}\) with a face of \(\partial  I^n \subseteq I^n\) via \(I^{n-1} \hookrightarrow I^n, (x_1, \dots, x_{n-1}) \mapsto (x_1, \dots, x_{n-1}, 0)\).
+
+\(J^{n-1} = \text{ union of all faces of } I^n \text{ except } I^{n-1}\). \(I^{n-1} \cup J^{n-1} = \partial I^n\), \(I^{n-1} \cap J^{n-1} = \partial I^{n-1}\). picture.
+
+\begin{defi}{}{}
+    Let \(X\) be a space, \(A\) a subspace of \(X\), \(x \in A\). For \(n \geq 1\) we define.
+    \[\pi_n(X,A,x)\]
+    as the set of triple homotopy classes of continuous maps \((I^n \partial I^n, J^{n-1}) \to (X,A,x)\).
+
+    Elements of \(\pi_n(X,A,x)\) are represented by continuous maps \(f\colon I^n \to X\), such that \(f(\partial I^n) \subseteq A\) and \(f(J^{n-1}) = \set{x}\). Two maps \(f, f'\) represent the same class if there is a triple homotopy
+    \[H\colon I^n \times [0,1] \to X\] such that
+    \begin{itemize}
+        \item \(H(\partial I^{n-1} \times [0,1]) \subseteq A\) and \(H(J^{n-1}\times [0,1]) = \set{x}\).
+    \end{itemize}
+    \(\pi_n(X,A,x)\) is the \(n\)-th relative homotopy group of \((X,A)\) at \(x\).
+    The special case (absolute) \(A = \set x\), we abbreviate \(\pi_n(X,x) = \coloneq \pi_n(X, \set x, x) = \text{ pair homotopy classes of maps } (I^n , \partial I^n) \to (X, \set x)\) = the absolute n-th homotopy group of \((X,x)\).
+\end{defi}picture
+
+\textbf{Note.} \(n = 1\). \(\pi_1(X,x) = \text{ homotopy classes of continuous maps } [0,1] \to X \text{ with } \set{0,1} \to X \text{ relative end points}\) = homotopy classes of loops in \(X\) based at \(x\) = fundamental group of \(X\) at \(x\).
+
+\textbf{Construction.} of the group structure.
+
+Let \(n \geq 2\) or ( \(n = 1\) and \(A = \set x\)). Let \(f,g \colon I^n \to X\) be continouus maps, that represent classes in \(\pi_n(X,A,x)\). We define \(f+g \colon I^n \to X\) by
+picture
+\((f+g)(x_1, \dots, x_n) = \begin{cases}
+    f(2x_1, x_2, \dots, x_n) & \text{if } 0 \leq x_1 \leq 1/2 \\
+    g(2x_1 -1, x_2, \dots, x_n) & \text{if } 1/2 \leq x \leq 1
+\end{cases}\)
+This descends to a well defined map on triple homotopy classes
+\[+ \colon \pi_n(X,A,x) \times \pi_n(X,A,x) \to \pi_n(X,A,x) \\ ([f], [g]) \mapsto [f] + [g] \coloneq [f+g]\]
+because we can also stack triple homotopies in the \(x_1\)-coordinate.
+
+\begin{thm}{}{}
+    Let \(X\) be a space, \(A\) a subspace, \(x \in A\). for \(n \geq 2\) the operation \(+\) defines a group structure on \(\pi_n(X,A, x)\).
+
+    For \(n \geq 3\) or (\(n = 2\) and \(A = \set{x}\)), this group structure is abelian.
+\end{thm}
+
+\begin{proof}picture
+    Group structure: same arguments as for \(\pi_1(X,x)\) in the first coordinate for the homotopies, inverses, neutral element, for associativity just \enquote{slide the homotopy over} (see figure )%%ref 
+    \begin{itemize}
+        \item Neutral element is represented by the constant map with value \(x\).
+        \item The inverse of \(f\) is repersented by the map \(\bar f \colon I^n \to X\), \(\bar f(x_1, x_2, \dots, x_n) = f(1-x_1, x_2, \dots, x_n)\).
+    \end{itemize}
+
+    \textbf{commutativity.} \(n \geq 3\) or (\(n = 2\) and \(A = \set{x}\)) We could use the second coordinate to define another \enquote{addition} \((f\diam g)(x_1, x_2, \dots, x_n) = \begin{cases}
+        f(x_1, 2x_2, x_3, \dots, x_n) & \text{if } 0 \leq x_2 \leq 1/2 \\
+        g(x_1, 2x_2 -1, x_3, \dots, x_n) & \text{if } 1/2 \leq x_2 \leq 1 \\
+    \end{cases}\)
+    This also descends to a group structure
+    \[\diam \colon \pi_n(X,A,x) \times \pi_n(X,A,x) \to \pi_n(X,A,x)\]
+    The two group structures \(+\) and \(\diam\) satisfy the \emph{interchange law}
+    \[(x+y) \diam (z+w) = (x \diam z) + (y \diam w)\]
+    \begin{proof}
+        picture 
+    \end{proof}
+    \(+\) and \(\diam\) also have the same neutral element \(0\).
+    \(y \diam z = (0+y) \diam (z+0) = (0 \diam z) + (y \diam 0) = z+y\)
+
+    \(y\diam z = (y+ 0) \diam (0 + z) = (y \diam 0) + (0 \diam z) = y + z\)
+
+    This is sometimes called the \enquote{Eckmann-Hilton argument}.
+\end{proof}
+
+Higher homotopy groups via spheres:
+
+We choose a quotient map \(\psi \colon I^n \to D^n\) with \(\psi(\partial I^n) = \partial D^n \), \(\psi(J^{n-1}) = z = (1,0,\dots, 0)\), such that the induced map
+\[I^n /J^{n-1} \to D^n\]
+is a homeomorphism.
+
+Note, that \(\partial I^n /J^{n-1} \cong \partial D^n\)
+Then precomposition with \(\psi\) gives a bijection
+\[\set{(D^n, \partial D^n, z) \to (X,A,x)} \to \set{(I^n, \partial I^n, J^{n-1}) \to (X,A,x)} arrow down cong  [f] \mapsto [f \circ \psi]\]
+squigarrow
+%%hlep, mod homotopy gives iso
+
+Special case: \(\pi_n(X,x) \cong \set{(S^n, z) \to (X,x)}\) with an homeomorphis \(D^n/\partial D^n \cong S^n\) and \(\partial D^n \leftrightarrow z\).
+
+The group structure in the sphere pictrue and absolute case is via \enquote{pinch map}.
+
+picture
+
+This defines a binary operation \(\pi_n'(X,x) \times \pi_n'(X,x) \to \pi_n'(X,x)\)
+%%hlep f,g \mapsto S^n \pinch S^n \vee S^n \to f\vee g X.
+
+We will not proove, this is the same group structure as we will not use it.
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{singular homology groups}
 

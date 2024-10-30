@@ -240,6 +240,7 @@
 \newcommand{\La}{\Leftarrow}
 \newcommand{\lra}{\leftrightarrow}
 \newcommand{\Lra}{\Leftrightarrow}
+\newcommand{\diam}{\diamond}
 
 \newcommand{\konj}[1]{\overline{#1}}
 \newcommand{\tra}[1]{\prescript{t}{}{#1}}
